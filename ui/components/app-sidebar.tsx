@@ -22,7 +22,7 @@ export function AppSidebar() {
       <SidebarHeader className="px-3 pt-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
-            <span className="flex size-6 items-center justify-center rounded-sm bg-lime font-mono text-[12px] font-medium text-ink">J</span>
+            <span className="flex size-6 items-center justify-center rounded-sm bg-brand font-mono text-[12px] font-medium text-brand-foreground">J</span>
             JuLaw
           </Link>
           <Button variant="ghost" size="icon" className="size-8 rounded-lg text-muted-foreground" aria-label="Collapse sidebar" onClick={toggleSidebar}>
@@ -52,7 +52,7 @@ export function AppSidebar() {
                         render={<button type="button" onClick={() => select(v.version)} />}
                       >
                         <FileText className="size-4" />
-                        <span className="flex-1 truncate">PV AGE — V{v.version}{v.live ? <span className="ml-1.5 rounded-sm bg-lime px-1 font-mono text-[10px] text-ink">live</span> : null}</span>
+                        <span className="flex-1 truncate">PV AGE — V{v.version}{v.live ? <span className="ml-1.5 rounded-sm bg-brand px-1 font-mono text-[10px] text-brand-foreground">live</span> : null}</span>
                         <span className={cn("font-mono text-[12px] tabular-nums", TONE_CLASSES[tone].text)}>{v.score.final}</span>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>

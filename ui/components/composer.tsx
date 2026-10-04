@@ -10,11 +10,11 @@ export function Composer() {
         <Textarea
           disabled
           placeholder="Ask about this review… (coming with /api/ask)"
-          className="min-h-[48px] resize-none border-0 bg-transparent px-2 text-[15px] shadow-none placeholder:text-[#8a8a8a] focus-visible:ring-0"
+          className="min-h-[48px] resize-none border-0 bg-transparent px-2 text-[15px] shadow-none placeholder:text-muted-foreground focus-visible:ring-0"
         />
         <div className="flex items-center justify-between px-1 pt-1">
           <span className="font-mono text-[11px] text-muted-foreground">Answers will be grounded in this review's context.json</span>
-          <Button size="icon" disabled className="size-9 rounded-lg bg-lime text-ink" aria-label="Send">
+          <Button size="icon" disabled className="size-9 rounded-lg bg-brand text-brand-foreground" aria-label="Send">
             <ArrowUp className="size-4" />
           </Button>
         </div>
