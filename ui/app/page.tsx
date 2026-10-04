@@ -42,8 +42,9 @@ export default function Landing() {
             <Image src="/thread-mark.svg" alt="" width={498} height={477} priority className="pointer-events-none absolute right-6 top-16 hidden w-[300px] lg:block" />
             <p className="eyebrow text-white/60">For corporate law firms</p>
             <h1 className="mt-5 max-w-[860px] text-[44px] font-semibold leading-[1.08] md:text-[60px]">
-              Your junior&apos;s PV, reviewed against <span className="underline decoration-brand decoration-[5px] underline-offset-[10px]">what was actually negotiated</span>.
+              Onboard your junior with <span className="underline decoration-brand decoration-[5px] underline-offset-[10px]">what matters for you</span>.
             </h1>
+            <p className="mt-4 text-[17px] italic text-white/60">Let&apos;s make your workforce ready for the AI-native reality.</p>
             <p className="mt-6 max-w-[640px] text-[17px] leading-relaxed text-white/70">
               Thread scores a draft procès-verbal, finds the firm's closest precedents, and rewrites the missing clauses with
               the deal&apos;s emails and calls. Juniors improve faster; partners review less.
@@ -140,7 +141,8 @@ export default function Landing() {
           <div className="mx-auto flex w-full max-w-[1100px] flex-wrap items-center justify-between gap-6 border-x border-white/10 px-6 py-16">
             <div>
               <p className="eyebrow text-white/60">Try it on the demo matter</p>
-              <h2 className="mt-3 text-[32px] font-semibold leading-[1.1]">Review a draft. Read why.</h2>
+              <h2 className="mt-3 text-[32px] font-semibold leading-[1.1]">Onboard your junior with what matters for you.</h2>
+              <p className="mt-2 text-[15px] italic text-white/60">Let&apos;s make your workforce ready for the AI-native reality.</p>
             </div>
             <Button className="h-11 rounded-lg bg-brand px-5 text-[15px] text-brand-foreground hover:bg-brand/85" nativeButton={false} render={<Link href="/app" />}>
               Open the workspace <ArrowRight className="size-4" />
