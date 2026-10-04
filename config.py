@@ -34,9 +34,11 @@ FAKE_EMBEDDINGS = os.getenv("FAKE_EMBEDDINGS", "0") == "1"
 DB_PATH = os.getenv("RAG_DB_PATH", str(BASE_DIR / "chroma_db"))
 COLLECTION = "best_practices_pv"
 
-# --- Découpage des documents ---------------------------------------------------
-CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))       # caractères
-CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))  # caractères
+# --- Découpage structurel des documents (voir chunking.py) -----------------------
+UNIT_MIN_CHARS = int(os.getenv("UNIT_MIN_CHARS", "300"))      # sous-articles plus courts : regroupés
+UNIT_MAX_CHARS = int(os.getenv("UNIT_MAX_CHARS", "1500"))     # unités plus longues : redécoupées
+PARENT_MAX_CHARS = int(os.getenv("PARENT_MAX_CHARS", "6000")) # taille max de l'unité rendue à l'agent
+CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "100"))        # uniquement entre morceaux d'une même unité
 
 # --- Recherche -----------------------------------------------------------------
 TOP_K_PER_QUERY = int(os.getenv("TOP_K_PER_QUERY", "5"))

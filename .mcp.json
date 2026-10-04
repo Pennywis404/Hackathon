@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "pv-scoring": {
+      "type": "stdio",
+      "command": ".venv/bin/python",
+      "args": [
+        "mcp_server.py"
+      ],
+      "env": {}
+    }
+  }
+}

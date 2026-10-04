@@ -15,10 +15,10 @@ import argparse
 import json
 from pathlib import Path
 
-import config
 import llm
 from ingest import get_collection
 from ocr import extract_pages
+from retrieval import passage_label, retrieve  # noqa: F401  (retrieve : utilisé aussi par pipeline.py)
 
 # --------------------------------------------------------------------------- #
 # Prompts
@@ -40,7 +40,7 @@ issus de la base documentaire de l'entreprise.
 Règles strictes :
 - Appuie-toi UNIQUEMENT sur les passages fournis. N'invente aucune règle ni référence.
 - Chaque recommandation cite les passages utilisés via leur numéro dans "sources".
-- Si aucun passage n'est pertinent, mets "couverture": "aucune" et ne recommande rien.
+- Si aucun passage n'est pertinent, mets "couverture": "aucune" et n'invente rien.
 - Ne donne pas d'avis juridique définitif ; signale ce qui mérite validation par le juridique.
 
 Réponds UNIQUEMENT en JSON :
@@ -59,6 +59,17 @@ de se prononcer."""
 # --------------------------------------------------------------------------- #
 # Étapes
 # --------------------------------------------------------------------------- #
+def read_document(path: Path) -> str:
+    """Texte d'un PV : .docx (bandeau de formation retiré) ou PDF (couche texte / OCR)."""
+    if path.suffix.lower() == ".docx":
+        import sources
+        text = sources.strip_training_banner(sources.docx_text(path))
+        if not text:
+            raise SystemExit("Document .docx vide.")
+        return text
+    return read_pdf(path)
+
+
 def read_pdf(path: Path) -> str:
     """Texte du PV, couche texte ou OCR Mistral (voir ocr.py)."""
     text = "\n\n".join(t for _, t in extract_pages(path)).strip()
@@ -67,37 +78,10 @@ def read_pdf(path: Path) -> str:
     return text
 
 
-def retrieve(col, queries: list[str], categorie: str | None = None, where: dict | None = None) -> list[dict]:
-    """Interroge la base avec plusieurs requêtes, fusionne et dédoublonne.
-
-    `where` : filtre Chroma complet (prioritaire) ; `categorie` : raccourci pour {"categorie": ...}.
-    """
-    if where is None and categorie:
-        where = {"categorie": categorie}
-    embeddings = llm.embed(queries)
-    best: dict[str, dict] = {}
-    for emb in embeddings:
-        res = col.query(
-            query_embeddings=[emb],
-            n_results=config.TOP_K_PER_QUERY,
-            where=where,
-            include=["documents", "metadatas", "distances"],
-        )
-        for pid, doc, meta, dist in zip(
-            res["ids"][0], res["documents"][0], res["metadatas"][0], res["distances"][0]
-        ):
-            if dist > config.MAX_DISTANCE:
-                continue
-            if pid not in best or dist < best[pid]["distance"]:
-                best[pid] = {"text": doc, "meta": meta, "distance": dist}
-    ranked = sorted(best.values(), key=lambda x: x["distance"])
-    return ranked[: config.TOP_K_PER_SECTION]
-
-
 def analyze_section(section: dict, passages: list[dict]) -> dict:
     if passages:
         ctx = "\n\n".join(
-            f"[{i}] ({p['meta']['source']}, p.{p['meta']['page']})\n{p['text']}"
+            f"[{i}] ({passage_label(p)})\n{p['text']}"
             for i, p in enumerate(passages, start=1)
         )
     else:
@@ -136,8 +120,8 @@ def build_report(pv_name: str, synthese: str, results: list[tuple[dict, dict]]) 
         if res.get("constats"):
             lines.append("")
         for k, rec in enumerate(res.get("recommandations", []), start=1):
-            refs = ", ".join(
-                f"{passages[i-1]['meta']['source']} p.{passages[i-1]['meta']['page']}"
+            refs = " ; ".join(
+                passage_label(passages[i - 1])
                 for i in rec.get("sources", [])
                 if isinstance(i, int) and 1 <= i <= len(passages)
             )

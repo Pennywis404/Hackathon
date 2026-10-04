@@ -1,0 +1,511 @@
+{
+ "pv": "PV AG - 01 V1 Augmentation de capital en numéraire.docx",
+ "version": 1,
+ "dossier": "Hélianthe Technologies",
+ "type_operation": "AGE_levee_de_fonds",
+ "type_libelle": "Assemblée générale extraordinaire d'augmentation de capital (levée de fonds, entrée d'investisseurs)",
+ "exigence": "standard",
+ "score": {
+  "brut": 26,
+  "malus_cles": -50,
+  "final": 0,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "suppression_dps",
+   "modalites_souscription",
+   "resultat_votes_detaille"
+  ],
+  "exigence": "standard"
+ },
+ "reponse": {
+  "resume": "Le PV d'augmentation de capital pour Hélianthe Technologies avec entrée de Lumen Capital est juridiquement incomplet. Les clauses clés manquantes (convocation, quorum, suppression du DPS, modalités de souscription, résultats des votes) bloquent la finalisation, comme souligné par Antoine Berthier dans ses mails. Les traces montrent que Léa a corrigé certains points (prime d'émission, RCS) mais a omis des éléments critiques pour la validité de l'opération. Le dossier exige une rigueur absolue pour satisfaire la banque, le CAC et le greffe.",
+  "priorites": [
+   "convocation",
+   "quorum_feuille_presence",
+   "suppression_dps"
+  ],
+  "par_clause": {
+   "convocation": {
+    "pourquoi_ici": "Sans convocation régulière, l'AGE est annulable. Antoine Berthier a explicitement pointé dans son mail du 15 mars (v1) que le PV doit être 'finançable', or la banque et le CAC vérifieront systématiquement cette clause. Le dossier n'a pas de trace écrite de la convocation, ce qui est un risque majeur.",
+    "redaction": "Les associés ont été convoqués par lettre recommandée avec accusé de réception en date du [date], conformément à l’article [X] des statuts, avec l’ordre du jour suivant : augmentation de capital, suppression du droit préférentiel de souscription, et modification corrélative des statuts."
+   },
+   "quorum_feuille_presence": {
+    "pourquoi_ici": "Lumen Capital, en tant qu'investisseur entrant, exige la preuve que l'AGE pouvait valablement décider. Antoine Berthier a insisté sur la nécessité de 'démontrer la majorité renforcée' (mail v2). Ici, le quorum renforcé (au moins 2/3 des actions pour une SAS) doit être constaté avec les chiffres exacts et la feuille de présence jointe.",
+    "redaction": "L’assemblée générale, réunie en première convocation, délibère valablement, les associés présents ou représentés représentant [X] actions sur [Y] actions composant le capital social, soit [Z]% du capital, conformément à l’article [X] des statuts. La feuille de présence est annexée au présent procès-verbal."
+   },
+   "suppression_dps": {
+    "pourquoi_ici": "Sans suppression explicite du DPS, les associés existants (Antoine Vasseur, Camille Ferrand) pourraient souscrire en priorité, ce qui rendrait impossible l'entrée de Lumen Capital. Léa a mentionné dans son mail du 15 mars (v2) avoir 'isolé la résolution de suppression du DPS', mais elle n'apparaît pas dans le PV final. C'est un point bloquant pour l'investisseur.",
+    "redaction": "L’assemblée, statuant aux conditions de quorum et de majorité requises pour les décisions modifiant les statuts, décide de supprimer le droit préférentiel de souscription des associés au profit de la société Lumen Capital, pour l’émission des [nombre] actions nouvelles."
+   },
+   "modalites_souscription": {
+    "pourquoi_ici": "Antoine Berthier a souligné dans son mail du 15 mars (v2) que 'le visa du certificat de dépôt des fonds manque toujours'. Sans modalités claires (délai, dépôt des fonds, certificat du dépositaire), l'augmentation n'est pas réalisée. Lumen Capital ne validera pas un PV sans cette garantie.",
+    "redaction": "Les actions nouvelles seront souscrites et libérées intégralement par Lumen Capital dans un délai de [X] jours à compter de la présente assemblée. Les fonds correspondants seront déposés sur le compte bancaire de la société ouvert au nom de [Banque], et un certificat du dépositaire sera établi par [Nom du dépositaire] attestant de la libération effective des fonds."
+   },
+   "resultat_votes_detaille": {
+    "pourquoi_ici": "La majorité renforcée (2/3 des voix pour une SAS) doit être démontrée résolution par résolution. Antoine Berthier a noté que le PV doit être 'closing ready', or les résultats des votes (voix pour, contre, abstentions) sont absents. Sans cela, le CAC ou le greffe pourraient contester la validité des décisions.",
+    "redaction": "Résolution 1 (augmentation de capital) : [X] voix pour, [Y] voix contre, [Z] abstentions. Résolution 2 (suppression du DPS) : [X] voix pour, [Y] voix contre, [Z] abstentions. Résolution 3 (modification des statuts) : [X] voix pour, [Y] voix contre, [Z] abstentions. Les résolutions sont adoptées à la majorité renforcée requise par l’article [X] des statuts."
+   },
+   "ordre_du_jour": {
+    "pourquoi_ici": "L'ordre du jour doit être identique à celui de la convocation et inclure explicitement la suppression du DPS, comme le précise Antoine Berthier dans ses retours. Ici, il est partiel et ne mentionne pas la suppression du DPS, ce qui pourrait invalider la résolution correspondante.",
+    "redaction": "Ordre du jour : augmentation de capital social par émission d’actions nouvelles, suppression du droit préférentiel de souscription, modification corrélative des statuts, pouvoirs."
+   },
+   "montant_augmentation": {
+    "pourquoi_ici": "Léa a corrigé le calcul (50 000 + 8 000 = 58 000) dans son mail du 15 mars (v2), mais le PV ne précise pas le nombre et la valeur nominale des actions émises. Sans ces détails, la table de capitalisation sera erronée et le greffe pourrait refuser l'enregistrement.",
+    "redaction": "L’assemblée décide d’augmenter le capital social de la société d’un montant de 8 000 euros par émission de [nombre] actions nouvelles d’une valeur nominale de [valeur nominale] euros chacune, au profit de Lumen Capital."
+   },
+   "prime_emission": {
+    "pourquoi_ici": "Léa a détaillé dans son mail du 15 mars (v2) que la prime d'émission était de 92 000 euros sur 100 000 euros au total. Le PV doit refléter cette valorisation négociée avec Lumen Capital, car c'est un élément clé pour l'investisseur et le CAC.",
+    "redaction": "Les actions nouvelles sont émises à un prix de souscription de [prix par action] euros par action, soit une prime d’émission de 92 000 euros, pour un prix total de 100 000 euros."
+   },
+   "modification_statuts_correlative": {
+    "pourquoi_ici": "Les statuts doivent explicitement mentionner les articles modifiés (capital et apports) pour que le greffe puisse enregistrer l'augmentation. Ici, la mention est trop vague et pourrait entraîner un rejet.",
+    "redaction": "Les statuts sont modifiés en conséquence, notamment en leurs articles [X] (capital social) et [Y] (apports), pour porter le capital social à 58 000 euros."
+   },
+   "cloture_signatures": {
+    "pourquoi_ici": "L'heure de clôture est un détail formel mais obligatoire pour la validité du PV. Sans elle, le document pourrait être contesté. Antoine Berthier a insisté sur la nécessité de 'finitions' pour que le PV soit 'closing ready'.",
+    "redaction": "La séance est levée à [heure] heures. Fait à Lyon, le 15 mars 2023. Signatures : M. Antoine Vasseur, Mme Camille Ferrand, Lumen Capital."
+   },
+   "en_tete_societe": {
+    "pourquoi_ici": "Léa a ajouté le RCS et la forme sociale complète dans son mail du 15 mars (v2), mais le PV final ne les inclut pas. Ces éléments sont essentiels pour identifier la société de manière non ambiguë, notamment pour le greffe.",
+    "redaction": "Hélianthe Technologies, Société par Actions Simplifiée au capital de 50 000 euros, Siège social : 24 rue des Tanneurs, 69007 Lyon, immatriculée au R.C.S. Lyon sous le numéro [numéro SIREN]."
+   }
+  },
+  "questions_suite": [
+   "As-tu vérifié que la convocation a bien été envoyée par LRAR avec l'ordre du jour complet ?",
+   "Peux-tu confirmer que la feuille de présence a été signée par tous les associés présents ou représentés ?",
+   "As-tu le certificat du dépositaire attestant de la libération des fonds par Lumen Capital ?"
+  ]
+ },
+ "clauses": [
+  {
+   "id": "en_tete_societe",
+   "libelle": "Identification de la société (dénomination, forme, capital avant opération, siège, RCS)",
+   "etat": "partielle",
+   "cle": false,
+   "poids": 5,
+   "pourquoi": "Le capital avant opération est la référence de l'augmentation.",
+   "extrait_pv": "Hélianthe Technologies\nSAS au capital de 50 000 euros\nSiège social : 24 rue des Tanneurs, 69007 Lyon",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Léa Marchand,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nAntoine, J'ai repris le document : j'ai corrigé le calcul (50 000 + 8 000 = 58 000), ajouté le numéro RCS et la forme sociale complète, isolé la résolution de suppression du DPS, détaillé la prime d'émission (92 000 euros sur 100 000 euros au total) et ajout",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "convocation",
+   "libelle": "Convocation : date d'envoi, mode, respect du délai",
+   "etat": "absente",
+   "cle": true,
+   "poids": 8,
+   "pourquoi": "Une convocation irrégulière rend l'augmentation annulable, ce qu'aucun investisseur n'accepte.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "quorum_feuille_presence",
+   "libelle": "Quorum renforcé constaté avec chiffres et feuille de présence",
+   "etat": "absente",
+   "cle": true,
+   "poids": 10,
+   "pourquoi": "Les investisseurs exigent la preuve que l'AGE pouvait valablement décider.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "ordre_du_jour",
+   "libelle": "Ordre du jour, identique à celui de la convocation",
+   "etat": "partielle",
+   "cle": true,
+   "poids": 8,
+   "pourquoi": "L'augmentation et la suppression du DPS doivent y figurer expressément.",
+   "extrait_pv": "Ordre du jour : augmentation de capital ; pouvoirs.",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "rapports_prealables",
+   "libelle": "Rapport du président (et du CAC si suppression du DPS) sur l'opération",
+   "etat": "absente",
+   "cle": false,
+   "poids": 6,
+   "pourquoi": "Justifie le prix d'émission et la suppression du DPS ; protège contre une action en nullité.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "montant_augmentation",
+   "libelle": "Montant nominal de l'augmentation, nombre et valeur nominale des titres émis",
+   "etat": "partielle",
+   "cle": true,
+   "poids": 10,
+   "pourquoi": "Définit l'opération ; toute erreur se répercute sur la table de capitalisation.",
+   "extrait_pv": "L'assemblée décide d'augmenter le capital social de la société d'un montant de 8 000 euros par émission d'actions nouvelles",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "prime_emission",
+   "libelle": "Prix de souscription et prime d'émission",
+   "etat": "partielle",
+   "cle": true,
+   "poids": 8,
+   "pourquoi": "La prime matérialise la valorisation négociée avec les investisseurs.",
+   "extrait_pv": "pour un prix total de 100 000 euros",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Léa Marchand,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nAntoine, J'ai repris le document : j'ai corrigé le calcul (50 000 + 8 000 = 58 000), ajouté le numéro RCS et la forme sociale complète, isolé la résolution de suppression du DPS, détaillé la prime d'émission (92 000 euros sur 100 000 euros au total) et ajout",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "suppression_dps",
+   "libelle": "Suppression du droit préférentiel de souscription au profit de bénéficiaires dénommés",
+   "etat": "absente",
+   "cle": true,
+   "poids": 10,
+   "pourquoi": "Sans suppression du DPS, les associés existants peuvent souscrire en priorité et l'entrée de l'investisseur échoue.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Léa Marchand,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nAntoine, J'ai repris le document : j'ai corrigé le calcul (50 000 + 8 000 = 58 000), ajouté le numéro RCS et la forme sociale complète, isolé la résolution de suppression du DPS, détaillé la prime d'émission (92 000 euros sur 100 000 euros au total) et ajout",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "modalites_souscription",
+   "libelle": "Modalités de souscription et de libération (délai, dépôt des fonds, certificat du dépositaire)",
+   "etat": "absente",
+   "cle": true,
+   "poids": 8,
+   "pourquoi": "L'augmentation n'est réalisée qu'une fois les fonds libérés et constatés.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Léa Marchand,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nAntoine, J'ai repris le document : j'ai corrigé le calcul (50 000 + 8 000 = 58 000), ajouté le numéro RCS et la forme sociale complète, isolé la résolution de suppression du DPS, détaillé la prime d'émission (92 000 euros sur 100 000 euros au total) et ajout",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "delegation_president",
+   "libelle": "Délégation au président pour constater la réalisation et modifier les statuts",
+   "etat": "absente",
+   "cle": false,
+   "poids": 6,
+   "pourquoi": "Évite une seconde assemblée pour constater l'opération.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Léa Marchand,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nAntoine, J'ai repris le document : j'ai corrigé le calcul (50 000 + 8 000 = 58 000), ajouté le numéro RCS et la forme sociale complète, isolé la résolution de suppression du DPS, détaillé la prime d'émission (92 000 euros sur 100 000 euros au total) et ajout",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "modification_statuts_correlative",
+   "libelle": "Modification corrélative des articles capital et apports",
+   "etat": "partielle",
+   "cle": true,
+   "poids": 8,
+   "pourquoi": "Les statuts doivent refléter le nouveau capital pour le dépôt au greffe.",
+   "extrait_pv": "Les statuts sont modifiés en conséquence.",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "resultat_votes_detaille",
+   "libelle": "Résultat de chaque vote : voix pour, contre, abstentions",
+   "etat": "absente",
+   "cle": true,
+   "poids": 10,
+   "pourquoi": "La majorité renforcée doit être démontrée résolution par résolution.",
+   "extrait_pv": "",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "pouvoirs_formalites",
+   "libelle": "Pouvoirs pour l'accomplissement des formalités",
+   "etat": "presente",
+   "cle": false,
+   "poids": 5,
+   "pourquoi": "Dépôt au greffe, annonce légale, mise à jour du Kbis.",
+   "extrait_pv": "Tous pouvoirs sont donnés pour les formalités.",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  },
+  {
+   "id": "cloture_signatures",
+   "libelle": "Heure de clôture et signatures des membres du bureau",
+   "etat": "partielle",
+   "cle": true,
+   "poids": 7,
+   "pourquoi": "Le PV non signé n'a pas de force probante.",
+   "extrait_pv": "La séance est levée.\nSignatures\nM. Antoine Vasseur\nMme Camille Ferrand\nLumen Capital",
+   "traces_orales": [
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v1\n\nLéa, Merci pour ce premier jet. Il part dans la bonne direction mais il n'est pas finançable en l'état : un PV d'augmentation de capital avec entrée d'un nouvel investisseur est un document que la banque, le commissaire aux comptes et potentiellement le gref",
+     "source_type": "mail",
+     "date": ""
+    },
+    {
+     "citation": "Mail de Antoine Berthier,  — RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2",
+     "text": "Objet : RE: Draft PV AG du 15 mars 2023 – Lumen Capital – v2\n\nLéa, C'est nettement mieux, le document est maintenant juridiquement solide et cohérent sur les chiffres. Il reste deux finitions avant de le considérer comme \"closing ready\" : Le visa du certificat de dépôt des fonds manque toujours. Tu as corrigé la prime ",
+     "source_type": "mail",
+     "date": ""
+    }
+   ]
+  }
+ ],
+ "precedents": [
+  {
+   "source": "actes/POA PETITES OBSERVATIONS AUTOMOBILES - Actes du 10-02-2020.pdf",
+   "page": 9,
+   "section_pv": "Troisième résolution - Modification des statuts",
+   "text": "… de tous pouvoirs à l'effet d'apporter aux statuts les modifications résultant d'une telle décision.\n\nPOA S.A.S\n\nStatuts modifiés le 3 juin 2019\n\n## **ARTICLE 5 - DURÉE**\n\nLa société a une durée de 99 années à compter de son immatriculation au registre du commerce et des sociétés, sauf dissolution anticipée ou prorogation.\n\n## **ARTICLE 6 - APPORTS**\n\nLors de la constitution de la société, il a é",
+   "distance": 0.141
+  },
+  {
+   "source": "actes/ADCYTHERIX - Actes du 18-08-2025.pdf",
+   "page": 2,
+   "section_pv": "Troisième résolution - Modification des statuts",
+   "text": "TROISIÈME DÉCISION — Ratification de la modification des statuts de la Société\n\nLe Président,\n\nconnaissance prise du projet de statuts modifiés figurant en Annexe 1 des présentes,\n\nprenant acte des Décisions des Associés de modifier les statuts de la Société sous la condition suspensive de la réalisation définitive de l’Augmentation de Capital,\n\ndécide en conséquence de la réalisation définitive d",
+   "distance": 0.144
+  },
+  {
+   "source": "actes/ALICE & BOB - Actes du 22-05-2026 (3).pdf",
+   "page": 3,
+   "section_pv": "Deuxième résolution - Constatation de l'augmentation de capital",
+   "text": "DIXIÈME RÉSOLUTION — Délégation à conférer au Président en vue de procéder, conformément aux dispositions de l’article L. 225-129-6 du Code de commerce, à une ou plusieurs augmentation(s) de capital réservée(s) aux\n\nsalariés de la Société adhérents d’un plan d’épargne d’entreprise, avec suppression du droit\n\npréférentiel de souscription des Associés à leur profit\n\nLes Associés,\n\naprès avoir pris c",
+   "distance": 0.148
+  },
+  {
+   "source": "actes/ALICE & BOB - Actes du 17-06-2025.pdf",
+   "page": 1,
+   "section_pv": "Deuxième résolution - Constatation de l'augmentation de capital",
+   "text": "PREMIÈRE DÉCISION — Constatation de la réalisation de l’augmentation de capital résultant de l’exercice de BSPCE par […]\n\nLe Président,\n\nau vu du bulletin d’exercice de BSPCE de […],\n\nconstate que les 1.000 actions ordinaires nouvelles ont été souscrites en totalité par […] sur exercice de 1.000 BSPCE et que le prix de souscription, d’un montant total de […] euros, a été intégralement libéré par v",
+   "distance": 0.149
+  },
+  {
+   "source": "actes/SAS DU COLISEE - Actes du 21-11-2013.pdf",
+   "page": 10,
+   "section_pv": "Bureau de l'assemblée",
+   "text": "… une autre répartition peut être aménagée.\n\n### **ARTICLE 14 : Président et organes dirigeants.**\n\nLa Société est représentée à l'égard des tiers, dirigée et administrée par un Président et un conseil d'administration, personne physique ou morale, actionnaire ou non, de la Société.\n\nUne décision collective organisée par les actionnaires désigne le Président de la Société ainsi que la durée de ses",
+   "distance": 0.151
+  },
+  {
+   "source": "actes/POA PETITES OBSERVATIONS AUTOMOBILES - Actes du 10-02-2020.pdf",
+   "page": 10,
+   "section_pv": "Troisième résolution - Modification des statuts",
+   "text": "… peut exercer contre l'associé défaillant et des mesures d'exécution forcée prévues par la loi.\n\n## **ARTICLE 10 - FORME DES ACTIONS**\n\nLes actions sont nominatives. La matérialité des actions résulte de leur inscription au nom du ou des titulaires sur des comptes tenus à cet effet par la société dans les conditions et modalités prévues par la loi.\n\nA la demande de l'associé, une attestation d'in",
+   "distance": 0.151
+  },
+  {
+   "source": "actes/SAS DU COLISEE - Actes du 21-11-2013.pdf",
+   "page": 12,
+   "section_pv": "Ordre du jour",
+   "text": "… généraux et à tout autre dirigeant de la société.\n\n## **ARTICLE 16 : Décisions des actionnaires.**\n\nLes décisions collectives des actionnaires sont prises en assemblée, ce qui implique une réunion physique des actionnaires en un même lieu, ou par consultation par correspondance.\n\n### **ARTICLE 16-1 : assemblée ordinaire.**\n\n- Mode de convocation\n\n- Périodicité de communication\n\n- Délai de convoc",
+   "distance": 0.152
+  },
+  {
+   "source": "actes/ALICE & BOB - Actes du 19-09-2025.pdf",
+   "page": 2,
+   "section_pv": "Première résolution - Augmentation de capital",
+   "text": "SEPTIÈME RÉSOLUTION — Délégation à conférer au Président en vue de procéder à une ou plusieurs augmentation(s) de capital\n\nd’un montant nominal maximum de 2.547,15 euros par la création et l'émission, en une ou plusieurs\n\nfois, d’un nombre maximum de 254.715 ABSABSA B, au prix de souscription unitaire, prime d’émission incluse, de […] euros, représentant un montant total maximum de souscription ég",
+   "distance": 0.152
+  },
+  {
+   "source": "actes/_ASSERAY  - Actes du 07-02-2023.pdf",
+   "page": 3,
+   "section_pv": "Première résolution - Augmentation de capital",
+   "text": "… les statuts.\n\n3- PROCEDER à l'accomplissement des formalités de publicité corrélatives.\n\n2\n\n# RESOLUTIONS\n\n# PREMIERE RESOLUTION\n\nL'assemblée générale déclare accepter l'augmentation de capital social par création de 2760 parts nouvelles d'une valeur unitaire nominale et économique de 152,449 euros chacune, à l'effet de porter le capital social de soixante mille neuf cent soixante-dix-neuf euros",
+   "distance": 0.153
+  },
+  {
+   "source": "actes/ALICE & BOB - Actes du 22-05-2026 (2).pdf",
+   "page": 2,
+   "section_pv": "Quatrième résolution - Pouvoirs",
+   "text": "TROISIÈME DÉCISION — Pouvoirs pour formalités\n\nLe Président,\n\nconfère tous pouvoirs au porteur d’un original pour accomplir toutes formalités, dépôts, enregistrements, immatriculations, modifications et radiations au registre du commerce et des sociétés, et plus généralement faire le nécessaire y compris par voie électronique.\n\n* * *\n\nFin des extraits. Copie certifiée conforme par le Président.\n\n_",
+   "distance": 0.153
+  }
+ ],
+ "corpus": {
+  "actes": 40,
+  "templates": 5,
+  "chunks": 671
+ }
+}

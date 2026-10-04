@@ -53,9 +53,9 @@ def test_load_pdf_one_doc_per_page(tmp_path):
 
 
 def test_unknown_extension_and_empty_file(tmp_path):
-    (tmp_path / "x.docx").write_text("x")
+    (tmp_path / "x.pptx").write_text("x")
     (tmp_path / "vide.txt").write_text("   ")
-    assert sources.load(tmp_path / "x.docx", tmp_path) == []
+    assert sources.load(tmp_path / "x.pptx", tmp_path) == []
     assert sources.load(tmp_path / "vide.txt", tmp_path) == []
     assert sources.iter_files(tmp_path) == [tmp_path / "vide.txt"]
 
@@ -98,3 +98,66 @@ def test_ingest_dossier_and_contexte_dossier(tmp_path):
     assert oral["suppression_dps"][0]["citation"].startswith(("Réunion 2026-09-11", "Mail de"))
     # Un autre dossier ne voit rien.
     assert all(v == [] for v in pipeline.contexte_dossier(col, clauses, "autre").values())
+
+
+# --- .docx : modèle, PV de formation (bandeau retiré), fil d'emails ---------------------------
+def _docx(path: Path, paragraphs: list[str]) -> Path:
+    import docx
+    d = docx.Document()
+    for p in paragraphs:
+        d.add_paragraph(p)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    d.save(str(path))
+    return path
+
+
+def test_docx_training_banner_is_stripped(tmp_path):
+    f = _docx(tmp_path / "V1 - PV TECHNOV - A EVITER.docx", [
+        "DOSSIER DE FORMATION — PV TECHNOV AGE • Niveau : À éviter • Note auteur : 1,2 / 5",
+        "⚠️ Exemple pédagogique — ne pas reproduire.",
+        "TECHNOV", "PROCÈS-VERBAL AG DU 15/03/2026", "Résolution 1 — Il est décidé d'augmenter le capital.",
+    ])
+    [doc] = sources.load(f, tmp_path)
+    assert "DOSSIER DE FORMATION" not in doc["text"] and "pédagogique" not in doc["text"]
+    assert doc["text"].startswith("TECHNOV") and "Résolution 1" in doc["text"]
+    assert doc["meta"]["source_type"] == "document"
+
+
+def test_docx_email_thread_is_split_into_mails(tmp_path):
+    f = _docx(tmp_path / "Emails pédagogiques - PV 01 Augmentation de capital.docx", [
+        "Échanges internes — PV n°1", "De : Antoine Berthier (Avocat associé)", "À : Léa Marchand", "Objet : RE: Draft PV v1",
+        "Léa, erreur de calcul sur le capital social : 50 000 + 8 000 = 58 000, pas 60 000. Refais le calcul trois fois.",
+        "De : Léa Marchand", "À : Antoine Berthier", "Objet : RE: Draft PV v1",
+        "Merci Antoine, je corrige le montant et j'ajoute la vérification du quorum avec les chiffres.",
+    ])
+    docs = sources.load(f, tmp_path, dossier="technov")
+    assert len(docs) == 2
+    assert all(d["meta"]["source_type"] == "mail" and d["meta"]["dossier"] == "technov" for d in docs)
+    assert docs[0]["meta"]["auteur"].startswith("Antoine Berthier") and docs[0]["meta"]["titre"] == "RE: Draft PV v1"
+    assert "58 000" in docs[0]["text"] and docs[0]["text"].startswith("Objet : RE: Draft PV v1")
+    assert docs[1]["meta"]["page"] == 2  # un mail = une « page », pour une citation stable
+    assert sources.label(docs[0]["meta"]).startswith("Mail de Antoine Berthier")
+
+
+# --- historiques synthétiques : lien V1/V2/mails ↔ PDF final -----------------------------------
+def test_history_pieces_are_linked_to_final_pdf(tmp_path):
+    root = tmp_path / "historiques"
+    d = root / "OVH - Actes du 09-12-2025"
+    (d / "mails").mkdir(parents=True)
+    (d / "V1.txt").write_text("[DOCUMENT SYNTHÉTIQUE — version V1 reconstituée de « OVH - Actes du 09-12-2025.pdf » "
+                              "pour l'entraînement ; jamais déposée ni signée]\n\nPremier jet.", encoding="utf-8")
+    (d / "mails" / "01.eml").write_bytes(b"From: A <a@cabinet.example>\nSubject: RE: Draft\n"
+                                         b"X-Source-PDF: PDF/OVH - Actes du 09-12-2025.pdf\nX-Version-Cible: v1\n\nCorrige le quorum.\n")
+    v1 = sources.load(d / "V1.txt", root)[0]
+    assert v1["text"] == "Premier jet."
+    assert (v1["meta"]["source_type"], v1["meta"]["version"], v1["meta"]["acte_id"]) == ("version", "V1", "OVH - Actes du 09-12-2025")
+    mail = sources.load(d / "mails" / "01.eml", root)[0]
+    assert (mail["meta"]["source_type"], mail["meta"]["version"], mail["meta"]["acte_id"]) == ("mail", "v1", "OVH - Actes du 09-12-2025")
+    assert sources.label(v1["meta"]) == "Brouillon V1 — OVH - Actes du 09-12-2025"
+
+
+def test_pdf_chunks_carry_acte_id(tmp_path):
+    import chunking
+    pdf = make_pdf(tmp_path / "OVH - Actes du 09-12-2025.pdf", ["Le quorum est atteint."])
+    _, chunks = chunking.build_chunks(pdf, pdf.name)
+    assert chunks[0].meta["acte_id"] == "OVH - Actes du 09-12-2025" and chunks[0].meta["version"] == "final"

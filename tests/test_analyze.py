@@ -72,7 +72,7 @@ def test_build_report_maps_citations_and_ignores_bad_indexes():
     assert "Synthèse ici." in md
     assert "| Votes | À améliorer | partielle |" in md  # STATUT_LABEL appliqué
     assert "- Le décompte des voix manque." in md
-    assert "Sources : guides_internes/guide.pdf p.2, guides_internes/guide.pdf p.1" in md
+    assert "Sources : guides_internes/guide.pdf, p.2 ; guides_internes/guide.pdf, p.1" in md
     # Recommandation 2 : indexes invalides → pas de ligne "Sources".
     rec2 = md.split("**Recommandation 2.**")[1].split("**Reformulation")[0]
     assert "Sources" not in rec2
@@ -123,8 +123,8 @@ def test_main_end_to_end(indexed, tmp_path, monkeypatch, capsys):
 
     md = out.read_text(encoding="utf-8")
     assert "## Quorum" in md and "## Votes" in md
-    assert "Sources : guides_internes/guide.pdf p.1" in md  # Quorum cite la page 1 du guide
-    assert "Sources : guides_internes/guide.pdf p.2" in md  # Votes cite la page 2
+    # Le guide est un document court : une seule unité, citée par les deux sections.
+    assert md.count("Sources : guides_internes/guide.pdf, p.1") == 2
     assert "Synthèse factice." in md
     # 1 décomposition + 1 analyse par section + 1 synthèse.
     kinds = [c[0] for c in calls]

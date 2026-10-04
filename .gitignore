@@ -6,3 +6,7 @@ chroma_db/
 docs/
 *.analyse.md
 samples/
+historiques/
+dossiers/
+.DS_Store
+UI_LEGORA/

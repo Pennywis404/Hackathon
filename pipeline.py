@@ -42,14 +42,16 @@ def analyze_label(meta: dict) -> str:
 
 
 def prepare(pv_path, exigence: str = "standard", categorie: str | None = None, out=None,
-            dossier: str | None = None) -> dict:
+            dossier: str | None = None, pv_text: str | None = None) -> dict:
+    """`pv_text` : texte déjà extrait (ex. reçu d'un client distant) ; le PDF n'est alors pas lu."""
     pv_path = Path(pv_path)
     grille = scoring.load_grille()
     if exigence not in grille["exigences"]:
         raise ValueError(f"exigence inconnue : {exigence} (attendu : {', '.join(grille['exigences'])})")
 
     print("1/6 Lecture du PV…")
-    pv_text = analyze.read_pdf(pv_path)
+    if not pv_text:
+        pv_text = analyze.read_document(pv_path)
 
     print("2/6 Type d'opération…")
     typ = scoring.detect_type(pv_text, grille)

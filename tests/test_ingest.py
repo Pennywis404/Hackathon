@@ -1,53 +1,66 @@
 """Découpage, extraction PDF et ingestion dans Chroma (hors-ligne)."""
 import pytest
 
+import chunking
 import ingest
+import ocr
 from conftest import make_pdf
 
 
-# --- split_text ------------------------------------------------------------------
-def test_split_short_text_is_one_chunk():
-    assert ingest.split_text("Un seul paragraphe.", size=1000, overlap=100) == ["Un seul paragraphe."]
-
-
-def test_split_groups_paragraphs_up_to_size():
-    text = "\n\n".join(f"Paragraphe {i}." for i in range(10))  # ~14 car. chacun
-    chunks = ingest.split_text(text, size=40, overlap=0)
-    assert len(chunks) > 1
-    assert all(len(c) <= 40 for c in chunks)
-    # Rien n'est perdu.
-    assert all(f"Paragraphe {i}." in "\n".join(chunks) for i in range(10))
-
-
-def test_split_long_paragraph_by_sentences():
-    text = "Phrase une. Phrase deux. Phrase trois. Phrase quatre."
-    chunks = ingest.split_text(text, size=25, overlap=0)
-    assert len(chunks) >= 2
-    assert "Phrase une." in chunks[0]
-
-
-def test_split_overlap_repeats_tail_of_previous_chunk():
-    text = "AAAAAAAAAA\n\nBBBBBBBBBB\n\nCCCCCCCCCC"
-    chunks = ingest.split_text(text, size=12, overlap=4)
-    assert chunks[0] == "AAAAAAAAAA"
-    assert chunks[1].startswith("AAAA ")  # fin du chunk précédent recopiée
-
-
-def test_split_empty_text():
-    assert ingest.split_text("   \n\n  ", size=100, overlap=10) == []
-
-
-# --- extract_pages -----------------------------------------------------------------
+# --- extraction PDF (ocr.py) ------------------------------------------------------------
 def test_extract_pages_skips_empty_pages(tmp_path):
     pdf = make_pdf(tmp_path / "x.pdf", ["Page un.", "", "Page trois."])
-    pages = ingest.extract_pages(pdf)
+    pages = ocr.extract_pages(pdf)
     assert [n for n, _ in pages] == [1, 3]
     assert "Page un." in pages[0][1]
 
 
 def test_extract_pages_scan_returns_nothing(tmp_path):
     pdf = make_pdf(tmp_path / "scan.pdf", ["", ""])
-    assert ingest.extract_pages(pdf) == []
+    assert ocr.extract_pages(pdf) == []
+
+
+# --- découpage structurel (chunking.py) -----------------------------------------------------
+PV_AG = (
+    "PROCÈS-VERBAL DE L'ASSEMBLÉE GÉNÉRALE\n"
+    "\n"
+    "PREMIÈRE RÉSOLUTION\n"
+    "Approbation des comptes\n"
+    "L'Assemblée approuve les comptes de l'exercice.\n"
+    "\n"
+    "DEUXIÈME RÉSOLUTION\n"
+    "Pouvoirs pour les formalites\n"
+    "L'Assemblée confère tous pouvoirs au porteur."
+)
+
+
+def test_pv_ag_is_split_by_resolution(tmp_path):
+    pdf = make_pdf(tmp_path / "pv.pdf", [PV_AG])
+    info, chunks = chunking.build_chunks(pdf, "pv.pdf")
+    assert info.doc_type == "pv_ag"
+    sections = [c.meta["section"] for c in chunks]
+    assert any(s.startswith("PREMIÈRE RÉSOLUTION") for s in sections)
+    assert any(s.startswith("DEUXIÈME RÉSOLUTION") for s in sections)
+    deux = next(c for c in chunks if c.meta["section"].startswith("DEUXIÈME"))
+    assert "tous pouvoirs" in deux.text and "approuve les comptes" not in deux.text
+
+
+def test_scanned_pdf_goes_through_ocr(tmp_path, monkeypatch):
+    monkeypatch.setattr(ocr, "ocr_pages", lambda p: [(1, "Texte lu par OCR.")])
+    pdf = make_pdf(tmp_path / "scan.pdf", [""])
+    info, chunks = chunking.build_chunks(pdf, "scan.pdf")
+    assert info is not None and "Texte lu par OCR." in chunks[0].text
+
+
+def test_text_chunks_keep_source_metadata():
+    meta = {"source": "mails/a.eml", "page": 1, "categorie": "mails", "dossier": "acme",
+            "source_type": "mail", "date": "2026-09-14", "auteur": "Me X", "titre": "DPS"}
+    chunks = chunking.build_text_chunks("Il faut supprimer le DPS.", meta, "Mail de Me X, 2026-09-14 — DPS")
+    assert len(chunks) == 1
+    c = chunks[0]
+    assert c.meta["source_type"] == "mail" and c.meta["dossier"] == "acme" and c.meta["chunk_type"] == "texte"
+    assert c.embed_text.startswith("Mail de Me X")
+    assert c.parent_text == "Il faut supprimer le DPS."
 
 
 # --- ingest ---------------------------------------------------------------------------
@@ -57,7 +70,8 @@ def test_ingest_metadata_contract(docs_dir):
     rows = col.get(include=["metadatas"])
     assert col.count() > 0
     for m in rows["metadatas"]:
-        assert {"source", "page", "categorie", "dossier", "source_type", "date", "auteur", "titre"} <= set(m)
+        assert {"source", "page", "categorie", "dossier", "source_type", "date", "auteur", "titre",
+                "doc_type", "section", "chunk_type", "parent_id"} <= set(m)
         assert m["source_type"] == "document" and m["dossier"] == "general"
     cats = {m["categorie"] for m in rows["metadatas"]}
     assert cats == {"guides_internes", "modeles_pv", "general"}
@@ -100,3 +114,24 @@ def test_ingest_no_pdf_exits(tmp_path):
     (tmp_path / "vide").mkdir()
     with pytest.raises(SystemExit):
         ingest.ingest(tmp_path / "vide")
+
+
+def test_reingest_replaces_old_version(docs_dir):
+    ingest.ingest(docs_dir)
+    make_pdf(docs_dir / "modeles_pv" / "modele.pdf", ["Texte entierement nouveau."])
+    ingest.ingest(docs_dir)
+    docs = ingest.get_collection().get(where={"source": "modeles_pv/modele.pdf"}, include=["documents"])["documents"]
+    assert docs and all("nouveau" in d for d in docs)
+
+
+def test_dry_run_writes_nothing(docs_dir, capsys):
+    ingest.ingest(docs_dir, dry_run=True)
+    assert "Simulation terminée" in capsys.readouterr().out
+    assert ingest.get_collection().count() == 0
+
+
+def test_dry_run_never_calls_ocr(docs_dir, monkeypatch):
+    def boom(p):
+        raise AssertionError("OCR appelé pendant une simulation")
+    monkeypatch.setattr(ocr, "ocr_pages", boom)
+    ingest.ingest(docs_dir, dry_run=True)  # docs_dir contient un scan
