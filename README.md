@@ -6,8 +6,10 @@ Un agent lit un PV d'AG (société commerciale), cherche dans la base de documen
 
 ```bash
 pip install -r requirements.txt
-export MISTRAL_API_KEY="votre_clé"
+echo 'MISTRAL_API_KEY=votre_clé' > .env      # lu automatiquement (ou exportez la variable)
 ```
+
+Tests (hors-ligne, sans clé) : `pytest` · avec l'API réelle : `pytest -m real_api`.
 
 ## Utilisation
 

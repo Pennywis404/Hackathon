@@ -18,7 +18,10 @@ def _get_client():
                 "MISTRAL_API_KEY manquante. Exportez-la (export MISTRAL_API_KEY=...) "
                 "ou utilisez FAKE_EMBEDDINGS=1 pour tester l'ingestion hors-ligne."
             )
-        from mistralai import Mistral
+        try:
+            from mistralai.client import Mistral  # SDK >= 3.0
+        except ImportError:
+            from mistralai import Mistral  # SDK 1.x / 2.x
 
         _client = Mistral(api_key=config.MISTRAL_API_KEY)
     return _client

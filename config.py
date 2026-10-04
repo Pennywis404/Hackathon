@@ -4,10 +4,27 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 
+
+def _load_dotenv(path: Path) -> None:
+    """Charge `.env` (KEY=valeur) sans écraser les variables déjà exportées."""
+    if not path.is_file():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.removeprefix("export ").strip()
+        os.environ.setdefault(key, value.strip().strip("'\""))
+
+
+_load_dotenv(BASE_DIR / ".env")
+
 # --- Mistral -----------------------------------------------------------------
 MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
 EMBED_MODEL = os.getenv("EMBED_MODEL", "mistral-embed")
-CHAT_MODEL = os.getenv("CHAT_MODEL", "mistral-large-latest")
+# ministral-14b : accessible sur le palier gratuit ; mistral-large/medium ne le sont pas.
+CHAT_MODEL = os.getenv("CHAT_MODEL", "ministral-14b-latest")
 
 # Mode hors-ligne pour tester le pipeline sans clé API (embeddings factices).
 FAKE_EMBEDDINGS = os.getenv("FAKE_EMBEDDINGS", "0") == "1"
