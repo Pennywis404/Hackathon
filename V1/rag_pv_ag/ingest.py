@@ -18,10 +18,10 @@ from pathlib import Path
 
 import chromadb
 
-import Hackathon.V1.rag_pv_ag.chunking as chunking
-import Hackathon.V1.rag_pv_ag.config as config
+import chunking as chunking
+import config as config
 import llm
-from Hackathon.V1.rag_pv_ag.parents import ParentStore
+from parents import ParentStore
 
 
 def get_collection(reset: bool = False):

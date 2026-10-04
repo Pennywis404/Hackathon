@@ -19,7 +19,7 @@ from pathlib import Path
 
 import pymupdf
 
-import Hackathon.V1.rag_pv_ag.config as config
+import config as config
 
 # --------------------------------------------------------------------------- #
 # Structures

@@ -6,7 +6,7 @@ parent complet est conservé ici (SQLite) et récupéré après la recherche.
 import sqlite3
 from pathlib import Path
 
-import Hackathon.V1.rag_pv_ag.config as config
+import config as config
 
 
 class ParentStore:

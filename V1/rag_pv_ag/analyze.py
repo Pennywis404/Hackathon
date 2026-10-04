@@ -17,10 +17,9 @@ from pathlib import Path
 
 import pymupdf
 
-import Hackathon.V1.rag_pv_ag.config as config
 import llm
-from Hackathon.V1.rag_pv_ag.ingest import get_collection
-from Hackathon.V1.rag_pv_ag.parents import ParentStore
+from ingest import get_collection
+from retrieval import passage_label, retrieve
 
 # --------------------------------------------------------------------------- #
 # Prompts
@@ -67,43 +66,6 @@ def read_pdf(path: Path) -> str:
     if not text:
         raise SystemExit("Aucun texte extractible dans ce PV (PDF scanné ?).")
     return text
-
-
-def retrieve(col, queries: list[str], categorie: str | None) -> list[dict]:
-    """Cherche sur les petits chunks, puis rend l'unité entière (parent) à l'agent.
-
-    Plusieurs requêtes par section ; les chunks d'une même unité sont fusionnés
-    (on garde la meilleure distance) et dédoublonnés.
-    """
-    where = {"categorie": categorie} if categorie else None
-    embeddings = llm.embed(queries)
-    best: dict[str, dict] = {}  # parent_id -> {meta, distance}
-    for emb in embeddings:
-        res = col.query(
-            query_embeddings=[emb],
-            n_results=config.TOP_K_PER_QUERY,
-            where=where,
-            include=["metadatas", "distances"],
-        )
-        for meta, dist in zip(res["metadatas"][0], res["distances"][0]):
-            if dist > config.MAX_DISTANCE:
-                continue
-            pid = meta["parent_id"]
-            if pid not in best or dist < best[pid]["distance"]:
-                best[pid] = {"meta": meta, "distance": dist}
-    ranked = sorted(best.items(), key=lambda kv: kv[1]["distance"])[: config.TOP_K_PER_SECTION]
-    texts = ParentStore().get_many([pid for pid, _ in ranked])
-    return [
-        {"text": texts[pid], "meta": v["meta"], "distance": v["distance"]}
-        for pid, v in ranked
-        if pid in texts
-    ]
-
-
-def passage_label(p: dict) -> str:
-    m = p["meta"]
-    section = m.get("section", "")
-    return f"{m['source']}, p.{m['page']}" + (f" — {section[:100]}" if section else "")
 
 
 def analyze_section(section: dict, passages: list[dict]) -> dict:

@@ -64,9 +64,28 @@ Pour ajouter un type de document, créer une fonction de découpage dans `chunki
 |---|---|---|
 | Ingestion | `ingest.py`, `chunking.py`, `parents.py` | Découpage structurel, embeddings `mistral-embed`, petits chunks dans ChromaDB, unités entières dans SQLite |
 | Décomposition du PV | `analyze.py` | Le LLM découpe le PV en sections (quorum, résolutions, votes, signatures…) et génère pour chacune des questions à poser à la base |
-| Recherche | `analyze.py` | Plusieurs requêtes par section, fusion des chunks d'une même unité, seuil de distance pour écarter le hors-sujet |
+| Recherche | `retrieval.py` | Plusieurs requêtes par section, fusion des chunks d'une même unité, seuil de distance pour écarter le hors-sujet |
 | Recommandations | `analyze.py` | Le LLM ne s'appuie que sur les unités retrouvées, cite ses sources et signale quand la base ne couvre pas la section |
 | Rapport | `analyze.py` | Markdown : synthèse, tableau de statuts, recommandations par section avec fichier, page et section des sources |
+
+## Le RAG comme outil d'un LLM
+
+`retrieval.py` expose la recherche sous forme d'outil (function calling Mistral / OpenAI), pour qu'un LLM interroge lui-même la base quand il en a besoin.
+
+- `TOOL_SPEC` : la définition de l'outil `search_best_practices` à passer dans `tools=[TOOL_SPEC]`. Paramètres : `query` (obligatoire, une question précise et autonome) et `categorie` (optionnel, nom d'un sous-dossier de `docs/`, par exemple `modeles_pv`).
+- `call_tool(name, arguments)` : exécute l'appel renvoyé par le LLM. `arguments` peut être la string JSON du `tool_call` ou un dict. Renvoie toujours une string JSON, à renvoyer au LLM dans un message de rôle `tool`. Ne lève jamais d'exception : une erreur (outil inconnu, JSON invalide, base vide…) revient sous la forme `{"erreur": "..."}` pour que le LLM puisse corriger son appel.
+- Résultat : `{"resultats": [{"source", "page", "section", "societe", "date_acte", "type", "pertinence", "texte"}]}`. `texte` est l'unité entière (décision, article, tableau), tronquée à 2500 caractères ; `type` est le type de passage (`texte`, `preambule`, `tableau`, `annexe`) ; `pertinence` vaut `1 - distance cosinus`.
+
+```python
+from retrieval import TOOL_SPEC, call_tool
+
+res = client.chat.complete(model=..., messages=messages, tools=[TOOL_SPEC])
+for tc in res.choices[0].message.tool_calls or []:
+    messages.append({"role": "tool", "name": tc.function.name, "tool_call_id": tc.id,
+                     "content": call_tool(tc.function.name, tc.function.arguments)})
+```
+
+`analyze.py` utilise les mêmes fonctions `retrieve` et `passage_label`, importées depuis `retrieval.py`.
 
 ## Réglages (config.py, par variables d'environnement)
 
