@@ -18,15 +18,21 @@ TEXTE_MAX_CHARS = 2500  # longueur maximale du texte d'un passage renvoyé au LL
 ORAL_TYPES = ("mail", "reunion", "note", "version")  # pièces citées par sources.label
 
 
-def retrieve(col, queries: list[str], categorie: str | None = None, where: dict | None = None) -> list[dict]:
+def retrieve(col, queries: list[str], categorie: str | None = None, where: dict | None = None,
+             brouillons: bool = False) -> list[dict]:
     """Cherche sur les petits chunks, puis rend l'unité entière (parent) à l'agent.
 
     Plusieurs requêtes par section ; les chunks d'une même unité sont fusionnés
     (on garde la meilleure distance) et dédoublonnés.
     `where` : filtre Chroma complet (prioritaire) ; `categorie` : raccourci pour {"categorie": ...}.
+    `brouillons` : les V1/V2 reconstituées (source_type « version ») contiennent des erreurs voulues ;
+    elles sont exclues sauf demande explicite, pour ne jamais passer pour une bonne pratique.
     """
     if where is None and categorie:
         where = {"categorie": categorie}
+    if not brouillons:
+        sans = {"source_type": {"$ne": "version"}}
+        where = {"$and": [where, sans]} if where else sans
     embeddings = llm.embed(queries)
     best: dict[str, dict] = {}  # parent_id -> {meta, distance}
     for emb in embeddings:
@@ -78,6 +84,7 @@ def search_best_practices(query: str, categorie: str | None = None) -> dict:
         "resultats": [
             {
                 "source": p["meta"].get("source"),
+                "acte_id": p["meta"].get("acte_id") or None,  # → historique_acte(acte_id) si un historique existe
                 "page": p["meta"].get("page"),
                 "section": p["meta"].get("section"),
                 "societe": p["meta"].get("societe"),
@@ -127,7 +134,60 @@ TOOL_SPEC = {
     },
 }
 
-TOOLS = {"search_best_practices": search_best_practices}
+HISTORIQUES_DIR = config.BASE_DIR / "historiques"
+
+
+def historique_acte(acte_id: str) -> dict:
+    """Comment un acte réel a été corrigé : défauts relevés en V1 puis en V2, et revues de l'associé.
+
+    Lit historiques/<acte_id>/ (generate_history.py). Pièces synthétiques, marquées comme telles."""
+    d = HISTORIQUES_DIR / acte_id
+    meta_path = d / "historique.json"
+    if not meta_path.is_file():
+        return {"erreur": f"Pas d'historique pour « {acte_id} »."}
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+    def corps(nom: str) -> str:
+        p = d / "mails" / nom
+        if not p.is_file():
+            return ""
+        from email import policy
+        from email.parser import BytesParser
+        msg = BytesParser(policy=policy.default).parsebytes(p.read_bytes())
+        return _tronquer(msg.get_body().get_content().split("\n--\n")[0].strip())
+
+    return {
+        "synthetique": True,
+        "acte_id": acte_id,
+        "final": meta["final"],
+        "categorie": meta.get("categorie_libelle", ""),
+        "etapes": [
+            {"version": "V1", "defauts": meta.get("defauts_v1", []), "revue_associe": corps("01_revue_v1.eml")},
+            {"version": "V2", "defauts": meta.get("defauts_v2", []), "revue_associe": corps("03_revue_v2.eml")},
+        ],
+    }
+
+
+TOOL_SPEC_HISTORIQUE = {
+    "type": "function",
+    "function": {
+        "name": "historique_acte",
+        "description": (
+            "Pour un acte retrouvé par search_best_practices (champ acte_id), renvoie comment il a été "
+            "rédigé : les défauts du premier jet (V1), ceux de la V2, et les revues de l'associé qui les "
+            "corrigent jusqu'à la version finale déposée. Utile pour expliquer POURQUOI une mention est "
+            "nécessaire. Pièces synthétiques (reconstituées), à présenter comme des exemples pédagogiques."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {"acte_id": {"type": "string", "description": "Valeur acte_id d'un résultat de recherche."}},
+            "required": ["acte_id"],
+        },
+    },
+}
+TOOL_SPECS = [TOOL_SPEC, TOOL_SPEC_HISTORIQUE]
+
+TOOLS = {"search_best_practices": search_best_practices, "historique_acte": historique_acte}
 
 
 def call_tool(name: str, arguments: str | dict) -> str:

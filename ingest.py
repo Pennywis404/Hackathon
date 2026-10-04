@@ -60,7 +60,8 @@ def file_chunks(path: Path, root: Path, dossier: str, doc_type: str | None = Non
 
 
 def ingest(docs_dir: Path, reset: bool = False, dossier: str = "general", doc_type: str | None = None,
-           skip_annexes: bool = False, dry_run: bool = False) -> None:
+           skip_annexes: bool = False, dry_run: bool = False, categorie: str | None = None) -> None:
+    """`categorie` : impose la métadonnée « categorie » (sinon : premier sous-dossier de docs_dir)."""
     files = sources.iter_files(docs_dir)
     if not files:
         raise SystemExit(f"Aucun fichier exploitable ({', '.join(sorted(sources.EXTENSIONS))}) dans {docs_dir}")
@@ -78,6 +79,9 @@ def ingest(docs_dir: Path, reset: bool = False, dossier: str = "general", doc_ty
             print(f"  - {rel} : aucun texte extractible "
                   + ("(scan : OCR à l'ingestion réelle)" if dry_run else "(même après OCR) → ignoré"))
             continue
+        if categorie:
+            for c in chunks:
+                c.meta["categorie"] = categorie
         if skip_annexes:
             chunks = [c for c in chunks if not c.meta.get("annexe")]
         chunks = list({c.id: c for c in chunks}.values())  # deux tableaux identiques → un seul id
@@ -120,5 +124,6 @@ if __name__ == "__main__":
                     help="force le type de découpage des PDF (sinon détecté automatiquement)")
     ap.add_argument("--skip-annexes", action="store_true", help="n'indexe pas les annexes")
     ap.add_argument("--dry-run", action="store_true", help="affiche le découpage sans embeddings ni écriture")
+    ap.add_argument("--categorie", default=None, help="impose la catégorie (ex. historiques) au lieu du sous-dossier")
     args = ap.parse_args()
-    ingest(args.docs_dir, args.reset, args.dossier, args.doc_type, args.skip_annexes, args.dry_run)
+    ingest(args.docs_dir, args.reset, args.dossier, args.doc_type, args.skip_annexes, args.dry_run, args.categorie)

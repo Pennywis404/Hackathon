@@ -57,3 +57,35 @@ def test_top_k_per_section_caps_results(indexed, monkeypatch):
     monkeypatch.setattr(config, "MAX_DISTANCE", 2.0)
     monkeypatch.setattr(config, "TOP_K_PER_SECTION", 1)
     assert len(analyze.retrieve(indexed, ["quorum", "votes", "president"], None)) == 1
+
+
+def test_drafts_are_excluded_unless_asked(tmp_path, monkeypatch):
+    """Les V1/V2 reconstituées (erreurs voulues) ne sortent jamais comme bonne pratique par défaut."""
+    import ingest
+    monkeypatch.setattr(config, "MAX_DISTANCE", 2.0)
+    root = tmp_path / "historiques"
+    d = root / "ACME - Actes du 01-01-2026"
+    d.mkdir(parents=True)
+    (d / "V1.txt").write_text("[DOCUMENT SYNTHÉTIQUE — version V1 reconstituée de « ACME - Actes du 01-01-2026.pdf » "
+                              "pour l'entraînement ; jamais déposée ni signée]\n\nLe quorum xylophone est faux.", encoding="utf-8")
+    ingest.ingest(root, categorie="historiques")
+    col = ingest.get_collection()
+    assert {m["categorie"] for m in col.get(include=["metadatas"])["metadatas"]} == {"historiques"}
+    assert analyze.retrieve(col, ["quorum xylophone"]) == []
+    res = analyze.retrieve(col, ["quorum xylophone"], brouillons=True)
+    assert res and res[0]["meta"]["version"] == "V1"
+
+
+def test_historique_acte_tool(tmp_path, monkeypatch):
+    import json
+    import retrieval
+    d = tmp_path / "ACME"
+    (d / "mails").mkdir(parents=True)
+    (d / "historique.json").write_text(json.dumps({"final": "PDF/ACME.pdf", "categorie_libelle": "X",
+                                                   "defauts_v1": [{"defaut": "a", "correction": "b"}], "defauts_v2": []}))
+    (d / "mails" / "01_revue_v1.eml").write_bytes(b"From: A <a@x>\nSubject: s\n\nAjoute le quorum.\n\n--\npied\n")
+    monkeypatch.setattr(retrieval, "HISTORIQUES_DIR", tmp_path)
+    out = json.loads(retrieval.call_tool("historique_acte", {"acte_id": "ACME"}))
+    assert out["etapes"][0]["defauts"][0]["defaut"] == "a"
+    assert out["etapes"][0]["revue_associe"] == "Ajoute le quorum."
+    assert "erreur" in json.loads(retrieval.call_tool("historique_acte", {"acte_id": "inconnu"}))

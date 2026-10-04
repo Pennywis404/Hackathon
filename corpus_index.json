@@ -1,0 +1,2318 @@
+[
+ {
+  "source": "actes/ACCENTURE - Actes du 30-04-2025.pdf",
+  "hash": "fec0530d6137",
+  "chars": 20151,
+  "forme": "SAS",
+  "societe": "Highly Confidential. See Accenture's",
+  "date": "2025-02-13",
+  "nature": "AGO",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 8,
+  "brut": 48,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "majorite_requise",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ADCYTHERIX - Actes du 16-12-2025 (1).pdf",
+  "hash": "e75e091ff03d",
+  "chars": 4633,
+  "forme": "SAS",
+  "societe": "DM_EU 22895757-1.125735.0011",
+  "date": "2025-11-25",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 43,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modalites_souscription",
+   "delegation_president",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ADCYTHERIX - Actes du 16-12-2025.pdf",
+  "hash": "d0bb9b8c7c56",
+  "chars": 4544,
+  "forme": "SAS",
+  "societe": "DM_EU 22895753-1.125735.0011",
+  "date": "2025-12-15",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 38,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ADCYTHERIX - Actes du 18-08-2025.pdf",
+  "hash": "9d6989e3af9d",
+  "chars": 102584,
+  "forme": "SAS",
+  "societe": "DM_EU 22322941-1.125735.0011",
+  "date": "2025-08-14",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ADCYTHERIX - Actes du 26-11-2025 (1).pdf",
+  "hash": "b93f4b5d1135",
+  "chars": 111808,
+  "forme": "SAS",
+  "societe": "DM_EU 22718013-2.125735.0011",
+  "date": "2025-10-14",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 34,
+  "brut": 64,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ADCYTHERIX - Actes du 26-11-2025.pdf",
+  "hash": "8b981a273039",
+  "chars": 101607,
+  "forme": "SAS",
+  "societe": "DM_EU 22718014-2.125735.0011",
+  "date": "2025-10-22",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/AIR FRANCE - KLM - Actes du 05-08-2026.pdf",
+  "hash": "bc149fda9f67",
+  "chars": 2482,
+  "forme": "SA",
+  "societe": "DE LA SEANCE DU CONSEIL D'ADMINISTRATION",
+  "date": "2026-07-29",
+  "nature": "AG",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": false,
+  "score": 0,
+  "brut": 25,
+  "cles_manquantes": [
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe"
+  ]
+ },
+ {
+  "source": "actes/AIR FRANCE - KLM - Actes du 26-06-2026.pdf",
+  "hash": "1bef7171efec",
+  "chars": 5925,
+  "forme": "SA",
+  "societe": "AIR FRANCE – KLM",
+  "date": "2026-06-03",
+  "nature": "AGE",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 51,
+  "brut": 71,
+  "cles_manquantes": [
+   "ordre_du_jour",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "convocation",
+   "quorum_feuille_presence",
+   "bureau",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 01-09-2025 (1).pdf",
+  "hash": "317bf7d80ffa",
+  "chars": 2538,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-07-15",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 01-09-2025.pdf",
+  "hash": "b5849e24bc4b",
+  "chars": 15219,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2022-02-03",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 21,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 10-09-2026 (1).pdf",
+  "hash": "e6d1d12a5e84",
+  "chars": 1878,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-08-03",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 36,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 10-09-2026.pdf",
+  "hash": "94612c45c3a4",
+  "chars": 5331,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-07-30",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 46,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "prime_emission",
+   "modalites_souscription",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 12-12-2025.pdf",
+  "hash": "6ef14e525a9b",
+  "chars": 2443,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-10-17",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 16-02-2026 (1).pdf",
+  "hash": "f5b5ed0e1e19",
+  "chars": 5082,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2023-11-11",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 37,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 16-02-2026 (2).pdf",
+  "hash": "77b114e4f80d",
+  "chars": 16359,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2023-10-11",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 35,
+  "brut": 65,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 16-02-2026.pdf",
+  "hash": "fa0318e34d14",
+  "chars": 2879,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-02-13",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 17-06-2025.pdf",
+  "hash": "cd5fc4da3145",
+  "chars": 2576,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-05-23",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 19-09-2025 (1).pdf",
+  "hash": "f9213340756a",
+  "chars": 63446,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-04-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 10,
+  "brut": 50,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 19-09-2025 (2).pdf",
+  "hash": "8a3e03d6e1ac",
+  "chars": 2449,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-08-13",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 36,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 19-09-2025.pdf",
+  "hash": "7c995ede98da",
+  "chars": 7262,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-04-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 33,
+  "brut": 63,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "prime_emission",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 20-02-2025 (1).pdf",
+  "hash": "5865e8d79815",
+  "chars": 2363,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2021-05-10",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "montant_augmentation",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 20-02-2025 (2).pdf",
+  "hash": "663cf0559952",
+  "chars": 2299,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2023-11-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 28,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "modalites_souscription",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 20-02-2025 (3).pdf",
+  "hash": "c2d29fed41e8",
+  "chars": 12381,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2020-04-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 7,
+  "brut": 57,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 20-02-2025.pdf",
+  "hash": "2e6d39d59658",
+  "chars": 4389,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2022-08-03",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 45,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "prime_emission",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 22-05-2026 (1).pdf",
+  "hash": "0f895debbadb",
+  "chars": 1859,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-05-21",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 36,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 22-05-2026 (2).pdf",
+  "hash": "e5a3de8e8ac6",
+  "chars": 5219,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-04-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 2,
+  "brut": 52,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "prime_emission",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 22-05-2026 (3).pdf",
+  "hash": "c02efd6b9adf",
+  "chars": 9958,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-04-20",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 31,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 22-05-2026.pdf",
+  "hash": "fb0050c77007",
+  "chars": 58531,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2026-05-21",
+  "nature": "DECISION",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 5,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "texte_resolution",
+   "majorite_requise",
+   "article_statuts_modifie",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 24-07-2025 (1).pdf",
+  "hash": "317bf7d80ffa",
+  "chars": 2538,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-07-15",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 24-07-2025 (2).pdf",
+  "hash": "58a65e35d5fc",
+  "chars": 3490,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-07-15",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 38,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 24-07-2025.pdf",
+  "hash": "b5849e24bc4b",
+  "chars": 15219,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2022-02-03",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 21,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 30-10-2025.pdf",
+  "hash": "689fe3cb3256",
+  "chars": 3109,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2025-09-16",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 33,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 31-10-2025 (1).pdf",
+  "hash": "5873ce89959a",
+  "chars": 14823,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2023-06-02",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 20,
+  "brut": 60,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 31-10-2025 (2).pdf",
+  "hash": "8c043f202bcf",
+  "chars": 15219,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2022-02-03",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 21,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 31-10-2025 (3).pdf",
+  "hash": "2efb8be7f460",
+  "chars": 3495,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2023-01-05",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 42,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALICE & BOB - Actes du 31-10-2025.pdf",
+  "hash": "c4d09b6fdf2a",
+  "chars": 3307,
+  "forme": "SAS",
+  "societe": "ALICE & BOB",
+  "date": "2023-07-03",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 30,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ALLIANCE AUTO INDUSTRIE - Actes du 15-05-2025.pdf",
+  "hash": "45bc5fdaec17",
+  "chars": 2501,
+  "forme": "SAS",
+  "societe": "ALLIANCE AUTO INDUSTRIE",
+  "date": "2024-06-13",
+  "nature": "AG",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 35,
+  "brut": 55,
+  "cles_manquantes": [
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie"
+  ]
+ },
+ {
+  "source": "actes/ALLIANCE AUTOMOTIVE PARIS NORD CENTRE - Actes du 11-08-2026.pdf",
+  "hash": "310a9ec54e8e",
+  "chars": 3492,
+  "forme": "SAS",
+  "societe": "- 1 -",
+  "date": "2026-06-30",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 21,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "majorite_requise",
+   "article_statuts_modifie",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 01-07-2025 (1).pdf",
+  "hash": "4cf0cd2d646c",
+  "chars": 58659,
+  "forme": "SAS",
+  "societe": "ANIMAJ",
+  "date": "2025-06-05",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 41,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "modalites_souscription",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 01-07-2025.pdf",
+  "hash": "9aef638f1f94",
+  "chars": 63439,
+  "forme": "SAS",
+  "societe": "ANIMAJ",
+  "date": "2025-05-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 8,
+  "brut": 58,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 06-08-2025 (1).pdf",
+  "hash": "88f7c506cddc",
+  "chars": 57213,
+  "forme": "SAS",
+  "societe": "ANIMAJ",
+  "date": "2025-08-04",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 43,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 06-08-2025.pdf",
+  "hash": "0cfe7112790a",
+  "chars": 58597,
+  "forme": "SAS",
+  "societe": "ANIMAJ",
+  "date": "2025-07-25",
+  "nature": "AGE",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 26,
+  "brut": 66,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 13-07-2023.pdf",
+  "hash": "7879144cc6b9",
+  "chars": 57484,
+  "forme": "SAS",
+  "societe": "PARIS 158793.1",
+  "date": "2023-06-26",
+  "nature": "AGE",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 21,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "prime_emission",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 13-12-2022.pdf",
+  "hash": "0376d570bfb3",
+  "chars": 63534,
+  "forme": "SAS",
+  "societe": "ACTIVE/120004683.2",
+  "date": "2022-11-30",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 18,
+  "brut": 58,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 16-03-2026 (1).pdf",
+  "hash": "23710c835493",
+  "chars": 4737,
+  "forme": "SAS",
+  "societe": "ANIMAJ",
+  "date": "2026-02-26",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 48,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ANIMAJ - Actes du 16-03-2026.pdf",
+  "hash": "3e044ce87fc5",
+  "chars": 4926,
+  "forme": "SAS",
+  "societe": "ANIMAJ",
+  "date": "2026-03-03",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 47,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/ATOS - Actes du 13-11-2023.pdf",
+  "hash": "4b3b426ad8e6",
+  "chars": 2516,
+  "forme": "SAS",
+  "societe": "ARAMIS",
+  "date": "2023-09-11",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 34,
+  "brut": 54,
+  "cles_manquantes": [
+   "convocation",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 09-11-2022.pdf",
+  "hash": "001af08e9463",
+  "chars": 3805,
+  "forme": "SAS",
+  "societe": "Code greffe : 7803",
+  "date": "2022-04-30",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 5,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 11-12-2025.pdf",
+  "hash": "7103f03030ea",
+  "chars": 98803,
+  "forme": "SAS",
+  "societe": "11 décembre 2025",
+  "date": "2025-12-11",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 0,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "texte_resolution",
+   "majorite_requise",
+   "article_statuts_modifie",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": []
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 16-06-2026.pdf",
+  "hash": "12d99b7f5178",
+  "chars": 1454,
+  "forme": "SAS",
+  "societe": "« Bertin Technologies »",
+  "date": "2026-05-20",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 14,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "majorite_requise",
+   "article_statuts_modifie",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 17-02-2023.pdf",
+  "hash": "caf71dfe44d1",
+  "chars": 31466,
+  "forme": "SAS",
+  "societe": "Page 1 sur 2",
+  "date": "2022-12-23",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 20,
+  "brut": 50,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 23-12-2022.pdf",
+  "hash": "129ff5932bce",
+  "chars": 31466,
+  "forme": "SAS",
+  "societe": "Page 1 sur 2",
+  "date": "2022-12-23",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 25,
+  "brut": 55,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "majorite_requise",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 25-02-2026.pdf",
+  "hash": "2b72afcaf1e6",
+  "chars": 12891,
+  "forme": "SAS",
+  "societe": "BERTIN TECHNOLOGIES",
+  "date": "2026-02-18",
+  "nature": "",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 42,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "suppression_dps",
+   "modalites_souscription",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "rapports_prealables",
+   "montant_augmentation",
+   "prime_emission",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 29-07-2022 (1).pdf",
+  "hash": "0cd1d16d8de2",
+  "chars": 7002,
+  "forme": "SAS",
+  "societe": "BERTIN TECHNOLOGIES",
+  "date": "2022-06-30",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 46,
+  "brut": 66,
+  "cles_manquantes": [
+   "convocation",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "documents_mis_a_disposition",
+   "ordre_du_jour",
+   "rapport_gestion",
+   "approbation_comptes",
+   "affectation_resultat",
+   "quitus",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/BERTIN TECHNOLOGIES - Actes du 29-07-2022.pdf",
+  "hash": "c8a5b6cae2e3",
+  "chars": 7002,
+  "forme": "SAS",
+  "societe": "BERTIN TECHNOLOGIES",
+  "date": "2022-06-30",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 46,
+  "brut": 66,
+  "cles_manquantes": [
+   "convocation",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "documents_mis_a_disposition",
+   "ordre_du_jour",
+   "rapport_gestion",
+   "approbation_comptes",
+   "affectation_resultat",
+   "quitus",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/CASINO CARBURANTS - Actes du 07-09-2015.pdf",
+  "hash": "a1c9312a7bdb",
+  "chars": 172,
+  "forme": "",
+  "societe": "Greffe du Tribunal de Commerce de SAINT ETIENNE  : dépôt N°5420 en date du 07/09",
+  "date": "2015-09-07",
+  "nature": "",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 0,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": []
+ },
+ {
+  "source": "actes/COMUTO - Actes du 24-06-2026.pdf",
+  "hash": "6fe75acd2052",
+  "chars": 4344,
+  "forme": "SA",
+  "societe": "COMUTO",
+  "date": "2026-02-10",
+  "nature": "AGE",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 40,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "suppression_dps",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "prime_emission",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 05-09-2024.pdf",
+  "hash": "d77b72412bea",
+  "chars": 10261,
+  "forme": "SAS",
+  "societe": "EPIKURE",
+  "date": "2024-05-07",
+  "nature": "",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": false,
+  "score": 0,
+  "brut": 29,
+  "cles_manquantes": [
+   "convocation",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 10-02-2025.pdf",
+  "hash": "da2aac586151",
+  "chars": 14062,
+  "forme": "SAS",
+  "societe": "ACTIVE/125671263.3 134947-320631",
+  "date": "2023-11-29",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 16,
+  "brut": 56,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "prime_emission",
+   "modalites_souscription"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "rapports_prealables",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 10-06-2025 (1).pdf",
+  "hash": "61a8b8a27d6f",
+  "chars": 3371,
+  "forme": "SAS",
+  "societe": "ACTIVE/127700664.3AA63 134947-320631",
+  "date": "2024-04-25",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 21,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 10-06-2025.pdf",
+  "hash": "9e59ebc3aba4",
+  "chars": 5242,
+  "forme": "SAS",
+  "societe": "ACTIVE/137579872.2",
+  "date": "2025-05-23",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 47,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "modalites_souscription",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 19-12-2025.pdf",
+  "hash": "b293a8ed5c0c",
+  "chars": 2413,
+  "forme": "SAS",
+  "societe": "EPIKURE",
+  "date": "2025-12-15",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 21,
+  "brut": 51,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "rapport_motifs",
+   "texte_resolution",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 20-07-2026.pdf",
+  "hash": "910084c9142a",
+  "chars": 1556,
+  "forme": "SAS",
+  "societe": "EPIKURE",
+  "date": "2026-03-18",
+  "nature": "",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": false,
+  "score": 0,
+  "brut": 18,
+  "cles_manquantes": [
+   "convocation",
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quitus"
+  ]
+ },
+ {
+  "source": "actes/EPIKURE - Actes du 24-02-2025.pdf",
+  "hash": "9f890639ee5d",
+  "chars": 8779,
+  "forme": "SAS",
+  "societe": "Goodwin – Projet du 04 février 2025 – VF",
+  "date": "2025-02-04",
+  "nature": "",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 21,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "prime_emission",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "rapports_prealables",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GENESIS AI - Actes du 07-05-2026.pdf",
+  "hash": "ef6822228d96",
+  "chars": 4916,
+  "forme": "SAS",
+  "societe": "Extrait certifié conforme à l'original",
+  "date": "2026-04-23",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 40,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "suppression_dps",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "montant_augmentation",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GENESIS AI - Actes du 24-12-2024.pdf",
+  "hash": "fb6d6bd29f6c",
+  "chars": 7169,
+  "forme": "SAS",
+  "societe": "WS0801.596176.2",
+  "date": "2025-03-14",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 47,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GENESIS AI - Actes du 28-07-2025 (1).pdf",
+  "hash": "9306a13e7cb9",
+  "chars": 6925,
+  "forme": "SAS",
+  "societe": "WS0101.39523763.1",
+  "date": "2025-06-13",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 6,
+  "brut": 56,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GENESIS AI - Actes du 28-07-2025.pdf",
+  "hash": "774677bb16e8",
+  "chars": 2873,
+  "forme": "SAS",
+  "societe": "Genesis AI",
+  "date": "2025-07-11",
+  "nature": "AGO",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 28,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "suppression_dps",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GENESIS AI - Actes du 28-11-2025.pdf",
+  "hash": "be76d862b563",
+  "chars": 4952,
+  "forme": "SAS",
+  "societe": "WS0101.40125330.2",
+  "date": "2025-11-20",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 47,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "prime_emission",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GENESIS AI - Actes du 30-09-2025 (1).pdf",
+  "hash": "e2849724ebc5",
+  "chars": 3310,
+  "forme": "SAS",
+  "societe": "Genesis AI",
+  "date": "2025-03-19",
+  "nature": "DECISION",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 50,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "modification_statuts_correlative",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "montant_augmentation",
+   "suppression_dps",
+   "modalites_souscription",
+   "delegation_president",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/GOJOB - Actes du 20-03-2023.pdf",
+  "hash": "2c5b1ccaf1fe",
+  "chars": 2070,
+  "forme": "SAS",
+  "societe": "Code greffe : 1301",
+  "date": "2022-11-23",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 14,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/LOHR SAS - Actes du 25-02-2021.pdf",
+  "hash": "a92928b0cf9e",
+  "chars": 7939,
+  "forme": "SAS",
+  "societe": "Code greffe : 6752",
+  "date": "2021-01-29",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 28,
+  "brut": 48,
+  "cles_manquantes": [
+   "approbation_comptes",
+   "affectation_resultat"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quorum_feuille_presence",
+   "bureau",
+   "ordre_du_jour",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/MAPED - Actes du 25-06-2024.pdf",
+  "hash": "3f6579239f45",
+  "chars": 68181,
+  "forme": "SAS",
+  "societe": "MAPED",
+  "date": "2024-05-16",
+  "nature": "AGO",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 60,
+  "brut": 70,
+  "cles_manquantes": [
+   "majorite_requise"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quorum_feuille_presence",
+   "bureau",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/PARIS SAINT GERMAIN FOOTBALL - Actes du 11-08-2025 (1).pdf",
+  "hash": "9f29cc67d9fb",
+  "chars": 118,
+  "forme": "",
+  "societe": "Docusign Envelope ID: E6FB0F83-0593-418A-8556-88607743FF52",
+  "date": "2025-08-11",
+  "nature": "",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": false,
+  "score": 0,
+  "brut": 0,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": []
+ },
+ {
+  "source": "actes/POA PETITES OBSERVATIONS AUTOMOBILES - Actes du 10-02-2020.pdf",
+  "hash": "92f438b806d2",
+  "chars": 43732,
+  "forme": "SAS",
+  "societe": "Code greffe : 7501",
+  "date": "2020-02-10",
+  "nature": "AGE",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 52,
+  "brut": 62,
+  "cles_manquantes": [
+   "majorite_requise"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/POWESCO - Actes du 08-07-2026 (1).pdf",
+  "hash": "5110d14e23d1",
+  "chars": 2974,
+  "forme": "SAS",
+  "societe": "POWESCO",
+  "date": "2026-06-30",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 7,
+  "brut": 37,
+  "cles_manquantes": [
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "article_statuts_modifie"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "texte_resolution"
+  ]
+ },
+ {
+  "source": "actes/POWESCO - Actes du 08-07-2026.pdf",
+  "hash": "4260a91dac2d",
+  "chars": 1957,
+  "forme": "",
+  "societe": "Companies House",
+  "date": "2024-07-24",
+  "nature": "",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": false,
+  "score": 0,
+  "brut": 0,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "approbation_comptes",
+   "affectation_resultat",
+   "resultat_votes_detaille",
+   "cloture_signatures"
+  ],
+  "clauses_presentes": []
+ },
+ {
+  "source": "actes/POWESCO - Actes du 21-07-2025.pdf",
+  "hash": "6f547e3e904d",
+  "chars": 4992,
+  "forme": "SAS",
+  "societe": "POWESCO",
+  "date": "2025-06-30",
+  "nature": "AGE",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 41,
+  "brut": 61,
+  "cles_manquantes": [
+   "convocation",
+   "majorite_requise"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "bureau",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/SAS AGROMI - Actes du 04-10-2018.pdf",
+  "hash": "ee11c4a75a2d",
+  "chars": 4348,
+  "forme": "SAS",
+  "societe": "Code greffe : 5103",
+  "date": "2018-09-06",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 36,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "approbation_comptes",
+   "affectation_resultat",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/SAS DU COLISEE - Actes du 21-11-2013.pdf",
+  "hash": "4145c8c84eea",
+  "chars": 29911,
+  "forme": "SAS",
+  "societe": "![img-0.jpeg](img-0.jpeg)",
+  "date": "2014-12-31",
+  "nature": "",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 0,
+  "brut": 39,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "majorite_requise",
+   "article_statuts_modifie"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "cloture_signatures"
+  ]
+ },
+ {
+  "source": "actes/SAS PING RESTAURATION - Actes du 23-09-2021.pdf",
+  "hash": "c3d4732dd415",
+  "chars": 6613,
+  "forme": "SAS",
+  "societe": "Code greffe : 7501",
+  "date": "2021-09-23",
+  "nature": "AGE",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 58,
+  "brut": 68,
+  "cles_manquantes": [
+   "article_statuts_modifie"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quorum_feuille_presence",
+   "bureau",
+   "ordre_du_jour",
+   "texte_resolution",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "actes/_ASSERAY  - Actes du 07-02-2023.pdf",
+  "hash": "1ad313400dd7",
+  "chars": 63660,
+  "forme": "",
+  "societe": "Code greffe : 4901",
+  "date": "1997-09-25",
+  "nature": "AGE",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 11,
+  "brut": 51,
+  "cles_manquantes": [
+   "convocation",
+   "suppression_dps",
+   "modalites_souscription",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "montant_augmentation",
+   "prime_emission",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "modeles_pv/Template 1 - PV AGO SAS - Approbation des comptes annuels.docx",
+  "hash": "35ea94eebf28",
+  "chars": 5528,
+  "forme": "SAS",
+  "societe": "[DÉNOMINATION DE LA SOCIÉTÉ]",
+  "date": "",
+  "nature": "AGO",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": true,
+  "score": 91,
+  "brut": 91,
+  "cles_manquantes": [],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quorum_feuille_presence",
+   "bureau",
+   "documents_mis_a_disposition",
+   "ordre_du_jour",
+   "rapport_gestion",
+   "approbation_comptes",
+   "affectation_resultat",
+   "quitus",
+   "conventions_reglementees",
+   "pouvoirs_formalites",
+   "cloture_signatures"
+  ]
+ },
+ {
+  "source": "modeles_pv/Template 2 - PV AGE SAS - Augmentation de capital en numeraire avec DPS.docx",
+  "hash": "a03b8c4e9b9c",
+  "chars": 6704,
+  "forme": "SAS",
+  "societe": "[DÉNOMINATION DE LA SOCIÉTÉ]",
+  "date": "",
+  "nature": "AGE",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 73,
+  "brut": 83,
+  "cles_manquantes": [
+   "suppression_dps"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "rapports_prealables",
+   "montant_augmentation",
+   "prime_emission",
+   "modalites_souscription",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites",
+   "cloture_signatures"
+  ]
+ },
+ {
+  "source": "modeles_pv/Template 3 - DAU SASU - Transfert siege et changement objet.docx",
+  "hash": "10422e8176ee",
+  "chars": 4133,
+  "forme": "SASU",
+  "societe": "[DÉNOMINATION DE LA SOCIÉTÉ]",
+  "date": "",
+  "nature": "DECISION",
+  "type_operation": "AGE_modification_statuts",
+  "type_detecte": true,
+  "score": 5,
+  "brut": 45,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "majorite_requise",
+   "resultat_votes_detaille"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "texte_resolution",
+   "article_statuts_modifie",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "modeles_pv/Template 4 - DUA SAS - Nomination d'un President.docx",
+  "hash": "5939e66a5b23",
+  "chars": 5265,
+  "forme": "SAS",
+  "societe": "[DÉNOMINATION DE LA SOCIÉTÉ]",
+  "date": "",
+  "nature": "",
+  "type_operation": "AGO_annuelle",
+  "type_detecte": false,
+  "score": 0,
+  "brut": 32,
+  "cles_manquantes": [
+   "convocation",
+   "quorum_feuille_presence",
+   "approbation_comptes",
+   "affectation_resultat"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "ordre_du_jour",
+   "quitus",
+   "pouvoirs_formalites"
+  ]
+ },
+ {
+  "source": "modeles_pv/Template 5 - PV AGE SAS - Emission de BSPCE.docx",
+  "hash": "3ef0870da635",
+  "chars": 9704,
+  "forme": "SAS",
+  "societe": "[DÉNOMINATION DE LA SOCIÉTÉ]",
+  "date": "",
+  "nature": "AGE",
+  "type_operation": "AGE_levee_de_fonds",
+  "type_detecte": true,
+  "score": 71,
+  "brut": 81,
+  "cles_manquantes": [
+   "prime_emission"
+  ],
+  "clauses_presentes": [
+   "en_tete_societe",
+   "quorum_feuille_presence",
+   "ordre_du_jour",
+   "rapports_prealables",
+   "montant_augmentation",
+   "suppression_dps",
+   "delegation_president",
+   "modification_statuts_correlative",
+   "pouvoirs_formalites",
+   "cloture_signatures"
+  ]
+ }
+]
