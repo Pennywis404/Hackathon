@@ -61,6 +61,7 @@ export interface ReviewContext {
   clauses: Clause[]
   precedents: Precedent[]
   corpus: { actes: number; templates: number; chunks: number }
+  live?: boolean
 }
 
 /** Les versions successives du PV du dossier, telles que produites par pipeline.prepare + respond. */

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { FileText, Folder, HelpCircle, PanelLeft } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -10,12 +9,13 @@ import {
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { VERSIONS, getVersion, scoreTone, TONE_CLASSES } from "@/lib/review";
+import { scoreTone, TONE_CLASSES } from "@/lib/review";
+import { useReview } from "@/components/review-provider";
 
 export function AppSidebar() {
   const { toggleSidebar } = useSidebar();
-  const current = getVersion(useSearchParams().get("v") ?? undefined);
-  const dossier = VERSIONS[0].dossier;
+  const { versions, current, select } = useReview();
+  const dossier = versions[0].dossier;
 
   return (
     <Sidebar className="border-r border-sidebar-border">
@@ -41,7 +41,7 @@ export function AppSidebar() {
                 <span className="truncate">{dossier}</span>
               </SidebarMenuButton>
               <SidebarMenuSub className="mx-0 ml-4 border-l-0 px-0">
-                {VERSIONS.map((v) => {
+                {versions.map((v) => {
                   const active = v.version === current.version;
                   const { tone } = scoreTone(v.score.final);
                   return (
@@ -49,10 +49,10 @@ export function AppSidebar() {
                       <SidebarMenuSubButton
                         isActive={active}
                         className="h-9 rounded-lg px-3 text-[14px] data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium"
-                        render={<Link href={`/app?v=${v.version}`} />}
+                        render={<button type="button" onClick={() => select(v.version)} />}
                       >
                         <FileText className="size-4" />
-                        <span className="flex-1 truncate">PV AGE — V{v.version}</span>
+                        <span className="flex-1 truncate">PV AGE — V{v.version}{v.live ? <span className="ml-1.5 rounded-sm bg-lime px-1 font-mono text-[10px] text-ink">live</span> : null}</span>
                         <span className={cn("font-mono text-[12px] tabular-nums", TONE_CLASSES[tone].text)}>{v.score.final}</span>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>

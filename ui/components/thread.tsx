@@ -7,6 +7,13 @@ import { ClauseSheet } from "@/components/clause-sheet";
 import { ReviewCard } from "@/components/review-card";
 import { type Clause, type Exigence, type ReviewContext, computeScore } from "@/lib/review";
 
+/** Le LLM renvoie parfois du `**gras**` : on le rend, sans dépendance markdown. */
+function renderBold(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? <strong key={i} className="font-semibold">{part.slice(2, -2)}</strong> : part,
+  );
+}
+
 export function Thread({ ctx }: { ctx: ReviewContext }) {
   const [exigence, setExigence] = useState<Exigence>(ctx.exigence);
   const [selected, setSelected] = useState<Clause | null>(null);
@@ -35,7 +42,7 @@ export function Thread({ ctx }: { ctx: ReviewContext }) {
       {/* Réponse : texte du LLM (respond.py), puis la carte calculée */}
       <div className="space-y-5 text-[15px] leading-[1.65]">
         {ctx.reponse.resume ? (
-          <p>{ctx.reponse.resume}</p>
+          <p>{renderBold(ctx.reponse.resume)}</p>
         ) : (
           <p className="text-muted-foreground">No written feedback for this version yet (run respond.py).</p>
         )}

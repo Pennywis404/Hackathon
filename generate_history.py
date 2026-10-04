@@ -68,8 +68,8 @@ def categories() -> dict[str, str]:
     out = {}
     for f in MODELES_DIR.glob("PV AG - * V1 *.docx"):
         m = re.match(r"PV AG - (\d+) V1 (.+)\.docx$", f.name)
-        if m:
-            out[m.group(1)] = m.group(2)
+        if m:  # « … exercice 2022 » : l'année de l'exemple ne doit pas exclure les autres exercices
+            out[m.group(1)] = re.sub(r"\s*(exercice\s+)?(19|20)\d{2}$", "", m.group(2)).strip()
     return dict(sorted(out.items()))
 
 
