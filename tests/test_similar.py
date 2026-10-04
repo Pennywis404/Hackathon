@@ -30,3 +30,13 @@ def test_n_limits_and_reasons_present():
 def test_missing_date_is_not_recent():
     idx = [{**INDEX[0], "date": ""}, {**INDEX[0], "source": "z.pdf", "date": "2026-01-01"}]
     assert similar.rank(DRAFT, idx, n=2)[0]["source"] == "z.pdf"
+
+
+def test_merge_states_is_monotonic_for_untouched_clauses():
+    import redraft
+    avant = [{"id": "a", "etat": "presente"}, {"id": "b", "etat": "partielle"}, {"id": "c", "etat": "absente"}]
+    apres = [{"id": "a", "etat": "partielle"}, {"id": "b", "etat": "presente"}, {"id": "c", "etat": "partielle"}]
+    out = {c["id"]: c["etat"] for c in redraft.merge_states(avant, apres, modifiees={"c"})}
+    assert out == {"a": "presente", "b": "presente", "c": "partielle"}  # a protégée, b améliorée, c re-vérifiée
+    out2 = {c["id"]: c["etat"] for c in redraft.merge_states(avant, apres, modifiees={"a"})}
+    assert out2["a"] == "partielle"  # modifiée : la re-vérification fait foi

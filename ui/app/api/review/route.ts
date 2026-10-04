@@ -1,52 +1,73 @@
 import { spawn } from "node:child_process";
+import { randomUUID } from "node:crypto";
 import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { NextResponse } from "next/server";
 
 // Le moteur Python vit à la racine du repo (ui/ est un sous-dossier).
 const ROOT = process.env.REVIEW_ROOT ?? path.resolve(process.cwd(), "..");
 const PYTHON = process.env.REVIEW_PYTHON ?? path.join(ROOT, ".venv", "bin", "python");
-const TIMEOUT_MS = 180_000;
+const TIMEOUT_MS = 300_000;
 
-export const maxDuration = 180;
+export const maxDuration = 300;
 
+/**
+ * POST multipart {file, exigence, dossier} → flux SSE :
+ *   event: step    data: {"step","label","pct"}        (une ligne par étape du moteur)
+ *   event: result  data: {...revue complète...}
+ *   event: error   data: {"error","detail"}
+ */
 export async function POST(req: Request) {
   const form = await req.formData();
   const file = form.get("file");
-  if (!(file instanceof File)) return NextResponse.json({ error: "Aucun fichier." }, { status: 400 });
-  if (!/\.(pdf|docx)$/i.test(file.name)) return NextResponse.json({ error: "PDF ou .docx uniquement." }, { status: 400 });
+  if (!(file instanceof File)) return sse([["error", { error: "Aucun fichier." }]]);
+  if (!/\.(pdf|docx)$/i.test(file.name)) return sse([["error", { error: "PDF ou .docx uniquement." }]]);
   const exigence = form.get("exigence") === "max" ? "max" : "standard";
   const dossier = String(form.get("dossier") ?? "helianthe").replace(/[^a-z0-9_-]/gi, "") || "helianthe";
-  const version = Number(form.get("version") ?? 0) || 0;
+  const id = randomUUID().slice(0, 8);
 
   const dir = await mkdtemp(path.join(tmpdir(), "julaw-"));
   const pv = path.join(dir, path.basename(file.name));
   await writeFile(pv, Buffer.from(await file.arrayBuffer()));
 
-  try {
-    const { stdout, stderr, code } = await run(PYTHON, [
-      path.join(ROOT, "scripts", "review.py"), pv, "--exigence", exigence, "--dossier", dossier, "--version", String(version),
-    ]);
-    if (code !== 0) {
-      return NextResponse.json({ error: "Le moteur a échoué.", detail: stderr.split("\n").filter(Boolean).slice(-6).join("\n") }, { status: 500 });
-    }
-    return NextResponse.json(JSON.parse(stdout));
-  } catch (e) {
-    return NextResponse.json({ error: e instanceof Error ? e.message : String(e) }, { status: 500 });
-  } finally {
-    await rm(dir, { recursive: true, force: true });
-  }
+  const encoder = new TextEncoder();
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      const send = (event: string, data: unknown) =>
+        controller.enqueue(encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`));
+      const child = spawn(PYTHON, [path.join(ROOT, "scripts", "review.py"), pv, "--exigence", exigence, "--dossier", dossier, "--id", id], { cwd: ROOT, env: process.env });
+      let stdout = "", stderr = "", buf = "";
+      const timer = setTimeout(() => child.kill(), TIMEOUT_MS);
+      child.stdout.on("data", (d) => (stdout += d));
+      child.stderr.on("data", (d) => {
+        const text = String(d);
+        stderr += text;
+        buf += text;
+        const lines = buf.split("\n");
+        buf = lines.pop() ?? "";
+        for (const line of lines) {
+          if (line.startsWith('{"step"')) {
+            try { send("step", JSON.parse(line)); } catch { /* ligne tronquée : ignorée */ }
+          }
+        }
+      });
+      child.on("error", (e) => { clearTimeout(timer); send("error", { error: e.message }); controller.close(); });
+      child.on("close", async (code) => {
+        clearTimeout(timer);
+        await rm(dir, { recursive: true, force: true });
+        if (code !== 0) {
+          send("error", { error: "Le moteur a échoué.", detail: stderr.split("\n").filter((l) => l && !l.startsWith('{"step"')).slice(-6).join("\n") });
+        } else {
+          try { send("result", JSON.parse(stdout)); } catch { send("error", { error: "Réponse du moteur illisible.", detail: stdout.slice(-300) }); }
+        }
+        controller.close();
+      });
+    },
+  });
+  return new Response(stream, { headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", Connection: "keep-alive" } });
 }
 
-function run(cmd: string, args: string[]) {
-  return new Promise<{ stdout: string; stderr: string; code: number }>((resolve, reject) => {
-    const child = spawn(cmd, args, { cwd: ROOT, env: process.env });
-    let stdout = "", stderr = "";
-    const timer = setTimeout(() => { child.kill(); reject(new Error(`Délai dépassé (${TIMEOUT_MS / 1000}s).`)); }, TIMEOUT_MS);
-    child.stdout.on("data", (d) => (stdout += d));
-    child.stderr.on("data", (d) => (stderr += d));
-    child.on("error", (e) => { clearTimeout(timer); reject(e); });
-    child.on("close", (code) => { clearTimeout(timer); resolve({ stdout, stderr, code: code ?? 1 }); });
-  });
+function sse(events: [string, unknown][]) {
+  const body = events.map(([e, d]) => `event: ${e}\ndata: ${JSON.stringify(d)}\n\n`).join("");
+  return new Response(body, { status: 200, headers: { "Content-Type": "text/event-stream" } });
 }

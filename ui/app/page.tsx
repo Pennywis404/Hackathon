@@ -83,7 +83,7 @@ export default function Landing() {
                 See how it works
               </Button>
             </div>
-            <p className="mt-6 font-mono text-[12px] text-white/50">Demo matter: Hélianthe Technologies · one PV, three drafts · V1 0 → V2 58 → V3 76 / 100</p>
+            <p className="mt-6 font-mono text-[12px] text-white/50">Demo matter: Hélianthe Technologies · draft V1 scored 2/100 → corrected file 75/100 · 10 sourced changes</p>
           </div>
         </section>
 
@@ -92,13 +92,13 @@ export default function Landing() {
           <Col className="px-6 pb-14">
             <div className="-mt-12 overflow-hidden rounded-md border bg-muted p-2">
               <Image
-                src="/workspace-helianthe.png"
+                src="/workspace-julaw.png"
                 alt="JuLaw workspace: a draft PV reviewed in a chat, with a score, the missing key clauses and the oral traces behind each one."
                 width={1600} height={1000} priority className="rounded-sm border"
               />
             </div>
             <p className="mt-4 font-mono text-[12px] text-muted-foreground">
-              Real output on the firm's training set: 40 acts, 5 templates, and the partner's emails on this matter.
+              Real output: 200 acts, 129 drafting histories, the 3 closest precedents, and a corrected .docx where every change is sourced.
             </p>
           </Col>
         </section>

@@ -23,8 +23,9 @@ from ingest import get_collection
 
 SYSTEM = """Tu es un avocat associé en droit des sociétés. On te donne le BROUILLON intégral d'un procès-verbal, \
 la liste des CLAUSES À CORRIGER (absentes ou partielles), pour chacune des EXTRAITS DE PRÉCÉDENTS du cabinet \
-(rédactions validées sur des opérations comparables) et, s'il y en a, des ÉCHANGES DU DOSSIER (mails / réunions) \
-qui disent ce que le cabinet et le client attendent.
+(rédactions validées sur des opérations comparables), les REVUES DE L'ASSOCIÉ sur ces précédents avec, pour chaque \
+défaut relevé, la CORRECTION attendue (ce que le cabinet exige quand il corrige ce type d'acte) et, s'il y en a, des \
+ÉCHANGES DU DOSSIER (mails / réunions).
 
 Ta mission : produire le PV corrigé.
 Règles strictes :
@@ -42,7 +43,8 @@ Réponds UNIQUEMENT en JSON :
 {"texte_corrige": "le PV complet avec les balises",
  "changements": [{"id": "id_clause", "resume": "ce qui a été ajouté/modifié en une phrase",
                   "source_precedent": "source du précédent utilisé ou chaîne vide",
-                  "source_email": "citation de l'échange utilisé ou chaîne vide",
+                  "source_revue": "acte dont la revue de l'associé a guidé ce changement, ou chaîne vide",
+                  "source_email": "citation de l'échange du dossier utilisé ou chaîne vide",
                   "justification": "pourquoi, en une ou deux phrases"}]}"""
 
 MOD_RE = re.compile(r"\[\[MOD:([a-z_]+)\]\](.*?)\[\[/MOD\]\]", re.S)
@@ -78,6 +80,20 @@ def _precedent_passages(clauses: list[dict], cases: list[dict], per_clause: int 
     return out
 
 
+RANG = {"absente": 0, "partielle": 1, "presente": 2}
+
+
+def merge_states(avant: list[dict], apres: list[dict], modifiees: set[str]) -> list[dict]:
+    """États après correction : re-vérification pour les clauses modifiées, max(avant, après) pour les autres."""
+    etat_avant = {c["id"]: c["etat"] for c in avant}
+    out = []
+    for c in apres:
+        a = etat_avant.get(c["id"], "absente")
+        etat = c["etat"] if c["id"] in modifiees or RANG[c["etat"]] >= RANG[a] else a
+        out.append({**c, "etat": etat})
+    return out
+
+
 def redraft(ctx: dict, n_cases: int = 3) -> dict:
     grille = scoring.load_grille()
     attendues = {c["id"]: c for c in grille["types_operation"][ctx["type_operation"]]["clauses"]}
@@ -87,8 +103,12 @@ def redraft(ctx: dict, n_cases: int = 3) -> dict:
     passages = _precedent_passages(a_corriger, cas["cas"])
     traces = ctx.get("contexte_dossier", {})
 
+    revues = [{"acte": c["acte_id"], "societe": c["societe"], "version": h["version"], "revue": h["revue"],
+               "defauts_releves_et_corrections": h["defauts"]}
+              for c in cas["cas"] for h in c.get("historique", [])]
     user = json.dumps({
         "brouillon": ctx["pv_text"],
+        "revues_associe_cas_similaires": revues,
         "clauses_a_corriger": [
             {"id": c["id"], "libelle": c["libelle"], "etat": c["etat"], "pourquoi": c["pourquoi"], "extrait_actuel": c["extrait_pv"],
              "precedents": passages[c["id"]],
@@ -110,7 +130,8 @@ def redraft(ctx: dict, n_cases: int = 3) -> dict:
     inchange_pct = round(100 * inchange / max(1, len(brouillon_paras)))
 
     sources_connues = [ctx["pv_text"]] + [p["texte"] for ps in passages.values() for p in ps] \
-        + [t["text"] for ts in traces.values() for t in ts]
+        + [t["text"] for ts in traces.values() for t in ts] + [r["revue"] for r in revues] \
+        + [d["correction"] for r in revues for d in r["defauts_releves_et_corrections"]]
     changements = []
     for ch in res.get("changements", []) or []:
         cid = str(ch.get("id", ""))
@@ -119,12 +140,14 @@ def redraft(ctx: dict, n_cases: int = 3) -> dict:
         texte_mod = mods.get(cid, "")
         changements.append({"id": cid, "libelle": attendues[cid]["libelle"], "etat_avant": next((c["etat"] for c in a_corriger if c["id"] == cid), ""),
                             "texte": texte_mod, "resume": str(ch.get("resume", "")), "source_precedent": str(ch.get("source_precedent", "")),
-                            "source_email": str(ch.get("source_email", "")), "justification": str(ch.get("justification", "")),
+                            "source_revue": str(ch.get("source_revue", "")), "source_email": str(ch.get("source_email", "")),
+                            "justification": str(ch.get("justification", "")),
                             "a_verifier": unsupported_facts(texte_mod, *sources_connues)})
 
-    # Score après : mêmes règles, sur le texte corrigé.
+    # Score après : mêmes règles, sur le texte corrigé. Une clause que la correction n'a pas touchée
+    # ne peut pas être jugée pire qu'avant (bruit du vérificateur LLM) ; les clauses modifiées sont re-vérifiées.
     clauses = grille["types_operation"][ctx["type_operation"]]["clauses"]
-    checks_apres = scoring.check_clauses(texte_propre, clauses)
+    checks_apres = merge_states(ctx["clauses_detectees"], scoring.check_clauses(texte_propre, clauses), {c["id"] for c in changements})
     score_apres = scoring.compute_score(checks_apres, clauses, ctx["exigence"], grille)
 
     return {"texte_corrige": texte_propre, "texte_balise": texte, "changements": changements, "cas_similaires": cas["cas"],
@@ -163,6 +186,8 @@ def to_docx(result: dict, ctx: dict, out: Path) -> Path:
             d.add_paragraph("Pourquoi : " + ch["justification"])
         if ch["source_precedent"]:
             d.add_paragraph("Précédent : " + ch["source_precedent"])
+        if ch.get("source_revue"):
+            d.add_paragraph("Revue de l'associé (historique reconstitué, synthétique) : " + ch["source_revue"])
         if ch["source_email"]:
             d.add_paragraph("Échange du dossier : " + ch["source_email"])
         if ch.get("a_verifier"):

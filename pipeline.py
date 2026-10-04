@@ -42,7 +42,7 @@ def analyze_label(meta: dict) -> str:
 
 
 def prepare(pv_path, exigence: str = "standard", categorie: str | None = None, out=None,
-            dossier: str | None = None, pv_text: str | None = None) -> dict:
+            dossier: str | None = None, pv_text: str | None = None, sections: bool = True) -> dict:
     """`pv_text` : texte déjà extrait (ex. reçu d'un client distant) ; le PDF n'est alors pas lu."""
     pv_path = Path(pv_path)
     grille = scoring.load_grille()
@@ -63,9 +63,9 @@ def prepare(pv_path, exigence: str = "standard", categorie: str | None = None, o
     score = scoring.compute_score(checks, clauses, exigence, grille)
     print(f"    score {score['final']}/100 (brut {score['brut']}, malus {score['malus_cles']})")
 
-    print("4/6 Sections et passages de la base…")
-    sections = llm.chat_json(analyze.SYSTEM_DECOMPOSE, pv_text).get("sections", [])
+    print("4/6 Sections et passages de la base…" if sections else "4/6 Sections : ignorées")
     col = get_collection()
+    sections = llm.chat_json(analyze.SYSTEM_DECOMPOSE, pv_text).get("sections", []) if sections else []
     for sec in sections:
         passages = analyze.retrieve(col, [sec.get("titre", ""), *sec.get("requetes", [])], categorie) if col.count() else []
         sec["passages"] = [
