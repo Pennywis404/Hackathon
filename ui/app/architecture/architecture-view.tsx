@@ -8,60 +8,70 @@ type Node = { n: string; title: string; text: string; tone: Tone; chips?: { labe
 
 /* ---------------- Vue d'ensemble ---------------- */
 const FEED: Node[] = [
-  { n: "01", title: "Firm documents", text: "PVs, decisions, deeds and guides exported from iManage.", tone: "ing" },
-  { n: "02", title: "Ingestion", text: "PDFs are read and split along their legal structure.", tone: "ing" },
-  { n: "03", title: "Knowledge base", text: "Semantic search, with source, page and section.", tone: "ing" },
+  { n: "01", title: "Firm documents", text: "200 corporate acts (greffe) and 5 templates, exported from the firm's document base.", tone: "ing" },
+  { n: "02", title: "Structural ingestion", text: "Each act is split along its legal structure: one decision or article = one unit. 6,410 indexed units.", tone: "ing" },
+  { n: "03", title: "Drafting histories", text: "For 129 acts, the path from first draft to final: V1, V2 and the partner's reviews. Synthetic today, the firm's own tomorrow.", tone: "ing" },
 ];
-const ANALYZE: Node[] = [
-  { n: "04", title: "AGM minutes", text: "The document to improve, uploaded as a PDF.", tone: "ana" },
-  { n: "05", title: "Analysis agent", text: "It reads the PV and looks up best practices, section by section.", tone: "ana" },
-  { n: "06", title: "Report and score", text: "Sourced recommendations and a compliance score.", tone: "out" },
-  { n: "07", title: "Back into the base", text: "The improved PV enriches the next analyses.", tone: "out" },
+const REVIEW: Node[] = [
+  { n: "04", title: "The junior imports a draft", text: "PDF or .docx, from the workspace. Strictness: standard or max.", tone: "ana" },
+  { n: "05", title: "Qualify and score", text: "Operation type, legal form, date. The expected clauses are checked; a key clause missing costs 10 points.", tone: "ana" },
+  { n: "06", title: "Closest precedents", text: "Three acts of the same operation and legal form, best coverage, most recent, with what the partner corrected on them.", tone: "ana" },
+  { n: "07", title: "Targeted correction", text: "Only the missing clauses are rewritten, from the precedents and the partner's reviews. Unknowns stay in brackets, never invented.", tone: "out" },
+  { n: "08", title: "Corrected file, and the why", text: "Score before → after, every change sourced, a .docx with highlights and a change log.", tone: "out" },
 ];
 
 /* ---------------- Vue technique ---------------- */
 const PHASE1: Node[] = [
-  { n: "SOURCE", title: "iManage", text: "Text PDF export (~180 acts).", tone: "ing",
-    chips: [{ label: "PDF" }, { label: "category = folder" }] },
-  { n: "01", title: "Extraction", text: "Blocks, tables, removal of page footers and tables of contents.", tone: "ing",
-    chips: [{ label: "PyMuPDF", key: true }, { label: "find_tables" }] },
-  { n: "02", title: "Structural chunking", text: "One decision or article = one unit. Tables in Markdown. Annexes kept apart.", tone: "ing",
-    chips: [{ label: "min 300" }, { label: "max 1500" }, { label: "parent ≤ 6000" }, { label: "overlap 100" }] },
-  { n: "03", title: "Embeddings", text: "Each chunk is prefixed with company, act, date and section.", tone: "ing",
-    chips: [{ label: "mistral-embed", key: true }, { label: "1024 dim" }, { label: "batches of 32" }] },
-  { n: "04", title: "Storage", text: "Small chunks are searched; the whole unit is handed to the LLM.", tone: "ing",
-    chips: [{ label: "ChromaDB · cosine", key: true }, { label: "SQLite parents", key: true }] },
+  { n: "SOURCE", title: "Document base", text: "200 PDFs (text or scanned) and 5 .docx templates.", tone: "ing",
+    chips: [{ label: "PDF" }, { label: ".docx" }, { label: "Mistral OCR · cached", key: true }] },
+  { n: "01", title: "Extraction", text: "Blocks, tables, removal of footers and tables of contents.", tone: "ing",
+    chips: [{ label: "PyMuPDF", key: true }, { label: "python-docx" }] },
+  { n: "02", title: "Structural chunking", text: "One decision or article = one unit. Tables in Markdown. Annexes apart.", tone: "ing",
+    chips: [{ label: "min 300" }, { label: "max 1500" }, { label: "parent ≤ 6000" }] },
+  { n: "03", title: "Embeddings and storage", text: "Small chunks are searched; the whole unit (parent) is handed to the LLM.", tone: "ing",
+    chips: [{ label: "mistral-embed · 1024", key: true }, { label: "ChromaDB · cosine", key: true }, { label: "SQLite parents" }] },
+  { n: "04", title: "Drafting histories", text: "V1 → partner review → V2 → review → final, reconstructed from each real act.", tone: "ing",
+    chips: [{ label: "generate_history.py", key: true }, { label: "129 acts" }, { label: "645 review emails" }, { label: "synthetic" }] },
+  { n: "05", title: "Quality index", text: "Per act: operation type, legal form, date, grid coverage. Feeds the precedent ranking.", tone: "ing",
+    chips: [{ label: "corpus_index.py", key: true }, { label: "qualify.py" }, { label: "205 acts" }] },
 ];
 const PHASE2: Node[] = [
-  { n: "INPUT", title: "AGM minutes", text: "Text PDF to improve.", tone: "ana", chips: [{ label: "PyMuPDF", key: true }] },
-  { n: "05", title: "Decomposition", text: "Sections: quorum, officers, resolutions, votes, signatures.", tone: "ana",
-    chips: [{ label: "mistral-large-latest", key: true }, { label: "JSON" }] },
-  { n: "06", title: "Retrieval", text: "Several queries per section, merged by unit, distance threshold.", tone: "ana",
-    chips: [{ label: "top-5 / query" }, { label: "top-6 / section" }, { label: "dist ≤ 0.75" }] },
-  { n: "07", title: "Recommendations", text: "Only from the retrieved passages, with sources cited.", tone: "ana",
-    chips: [{ label: "mistral-large-latest", key: true }] },
+  { n: "INPUT", title: "The draft", text: "PDF or .docx; training banners stripped.", tone: "ana", chips: [{ label: "sources.py", key: true }] },
+  { n: "06", title: "Qualification", text: "Legal form, company, date, nature (regex) and operation category among 13 types.", tone: "ana",
+    chips: [{ label: "qualify.py", key: true }, { label: "1 LLM call" }] },
+  { n: "07", title: "Grid and score", text: "Expected clauses per operation, each present / partial / absent. Score /100, −10 per missing key clause.", tone: "ana",
+    chips: [{ label: "scoring.py", key: true }, { label: "grille.json" }, { label: "mistral-medium · JSON" }] },
+  { n: "08", title: "Similar cases", text: "Category → grid family → nature → legal form → coverage → recency. Plus the partner's reviews on each.", tone: "ana",
+    chips: [{ label: "similar.py", key: true }, { label: "historique_acte" }, { label: "top 3" }] },
+  { n: "09", title: "Targeted redraft", text: "Missing clauses rewritten from precedent units, partner corrections and matter emails.", tone: "ana",
+    chips: [{ label: "redraft.py", key: true }, { label: "[à compléter]" }, { label: "facts check" }, { label: "monotonic score" }] },
 ];
 const OUTPUTS: Node[] = [
-  { n: "08", title: "Scoring", text: "The PV is compared with the retrieved best practices.", tone: "out" },
-  { n: "09", title: "Summary", text: "Strengths, priorities, points not covered.", tone: "out" },
-  { n: "OUTPUT", title: ".md report", text: "Statuses, recommendations, file · page · section.", tone: "out" },
-  { n: "10", title: "Back into the base", text: "Improved PV and score, re-ingested after validation.", tone: "out" },
+  { n: "10", title: "Feedback", text: "Summary, priorities, the why per clause, follow-up questions.", tone: "out", chips: [{ label: "respond.py", key: true }] },
+  { n: "OUTPUT", title: ".docx + JSON", text: "Highlights, change log with sources, score before → after. Streamed to the workspace.", tone: "out",
+    chips: [{ label: "scripts/review.py", key: true }, { label: "SSE" }, { label: "/api/download" }] },
+  { n: "11", title: "Tools for agents", text: "The same engine, callable by Claude or a legal platform.", tone: "out",
+    chips: [{ label: "mcp_server.py", key: true }, { label: "scorer_pv" }, { label: "search_best_practices" }, { label: "historique_acte" }] },
+  { n: "12", title: "Back into the base", text: "Once validated, the corrected act and its history join the corpus.", tone: "out" },
 ];
 const CHOICES: [string, React.ReactNode][] = [
-  ["Extraction", <><code>PyMuPDF</code>: blocks, tables, page positions</>],
-  ["Chunking", "Legal structure rather than fixed size"],
-  ["Embeddings", <><code>mistral-embed</code> (API); BGE-M3 and Qwen3 to benchmark</>],
-  ["Index", <><code>ChromaDB</code> cosine, filterable metadata</>],
-  ["Parents", <><code>SQLite</code>: the whole unit goes to the LLM</>],
-  ["LLM", <><code>mistral-large-latest</code>, JSON output and tools</>],
-  ["Agent", "Mistral function calling, single search tool"],
+  ["Extraction", <><code>PyMuPDF</code> · <code>Mistral OCR</code> for scans, cached</>],
+  ["Chunking", "Legal structure rather than fixed size; parent = whole unit"],
+  ["Embeddings", <><code>mistral-embed</code>, 1024 dims</>],
+  ["Index", <><code>ChromaDB</code> cosine, filterable metadata; drafts (V1/V2) excluded from best-practice search</>],
+  ["LLM", <><code>mistral-medium-latest</code>, JSON output, retries</>],
+  ["Histories", "Generated from real acts; marked synthetic everywhere"],
+  ["Guardrails", "Brackets instead of invented facts · unsupported-facts detector · after-score never below untouched clauses"],
+  ["Interface", <><code>Next.js</code> + <code>shadcn</code>; review streamed over SSE (~2 min)</>],
 ];
-const METADATA = ["source", "categorie", "doc_type", "societe", "acte", "date_acte", "section", "section_num", "chunk_type", "annexe", "page", "parent_id"];
-const ROUTER = ["decision_president", "decision_associes", "pv_ag", "traite", "document_structure", "generic"];
+const METADATA = ["source", "categorie", "doc_type", "source_type", "dossier", "societe", "acte_id", "version", "date_acte", "section", "chunk_type", "page", "parent_id"];
+const ROUTER = ["decision_president", "decision_associes", "pv_ag", "traite", "document_structure", "generic", "mail", "version"];
 const MODULES: [string, string][] = [
-  ["ingest · chunking · parents", "Phase 1"],
-  ["analyze · agent", "Phase 2"],
-  ["retrieval", "Search and tool"],
+  ["ingest · chunking · parents · sources · ocr", "Phase 1 — base"],
+  ["generate_history · corpus_index · qualify", "Phase 1 — histories and index"],
+  ["scoring · similar · redraft · respond", "Phase 2 — review"],
+  ["scripts/review · ui/", "Delivery"],
+  ["retrieval · mcp_server", "Tools for agents"],
   ["llm · config", "Mistral calls, settings"],
 ];
 
@@ -99,11 +109,11 @@ export function ArchitectureView() {
       <div className={s.wrap}>
         <section className={s.hero}>
           <div>
-            <div className={s.eyebrow}>mistral × law · architecture</div>
-            <h1 className={s.title}>From the AGM minutes<br />to best practices.</h1>
+            <div className={s.eyebrow}>thread · architecture</div>
+            <h1 className={s.title}>From a junior&apos;s first draft<br />to the firm&apos;s standard.</h1>
             <p className={s.sub}>
-              An agent reads your PV, queries the firm&apos;s document base, explains how to improve it and scores it.
-              The resulting document enriches the base.
+              Thread qualifies the draft, finds the firm&apos;s closest precedents and what the partner corrected on them,
+              rewrites only the missing clauses, and returns a scored file where every change cites its source.
             </p>
           </div>
           <button type="button" className={s.btn} onClick={() => setDark((d) => !d)} aria-label="Toggle theme">
@@ -124,34 +134,34 @@ export function ArchitectureView() {
               <Flow nodes={FEED} />
             </div>
 
-            <div className={s.bridge}><span>the base is queried <b>on every analysis</b></span></div>
+            <div className={s.bridge}><span>the base is queried <b>on every review</b></span></div>
 
             <div className={`${s.lane} ${s.big}`}>
-              <div className={s.laneH}><span className={s.sq} style={{ background: "var(--ana)" }} />Analysing a PV</div>
-              <Flow nodes={ANALYZE} />
-              <Loop>once validated, the resulting document joins the knowledge base</Loop>
+              <div className={s.laneH}><span className={s.sq} style={{ background: "var(--ana)" }} />Reviewing a junior&apos;s draft</div>
+              <Flow nodes={REVIEW} />
+              <Loop>once validated, the corrected act and its history join the base</Loop>
             </div>
 
             <div className={s.legend}>
-              <span><i className={s.sq} style={{ background: "var(--ing)" }} />Ingestion</span>
-              <span><i className={s.sq} style={{ background: "var(--ana)" }} />Analysis</span>
+              <span><i className={s.sq} style={{ background: "var(--ing)" }} />Base</span>
+              <span><i className={s.sq} style={{ background: "var(--ana)" }} />Review</span>
               <span><i className={s.sq} style={{ background: "var(--out)" }} />Deliverables</span>
             </div>
           </section>
         ) : (
           <section key="v2" className={s.view}>
             <div className={s.lane}>
-              <div className={s.laneH}><span className={s.sq} style={{ background: "var(--ing)" }} />Phase 1 — Ingestion (ingest.py)</div>
+              <div className={s.laneH}><span className={s.sq} style={{ background: "var(--ing)" }} />Phase 1 — Base (ingest.py · generate_history.py · corpus_index.py)</div>
               <Flow nodes={PHASE1} />
-              <Loop>resumable: file fingerprint, errors isolated per document</Loop>
+              <Loop>resumable: file fingerprint, OCR cache, errors isolated per document</Loop>
             </div>
 
-            <div className={s.bridge}><span>tool <b>search_best_practices(query, categorie)</b> · function calling</span></div>
+            <div className={s.bridge}><span>tools <b>search_best_practices · historique_acte · scorer_pv</b> · drafts excluded from search</span></div>
 
             <div className={s.lane}>
-              <div className={s.laneH}><span className={s.sq} style={{ background: "var(--ana)" }} />Phase 2 — Analysis (analyze.py · agent.py)</div>
+              <div className={s.laneH}><span className={s.sq} style={{ background: "var(--ana)" }} />Phase 2 — Review (scripts/review.py · 8 streamed steps · ~2 min)</div>
               <Flow nodes={PHASE2} />
-              <Loop>repeated for each section of the PV · or agent loop (25 turns max)</Loop>
+              <Loop>the LLM judges clause states and writes; the score itself is computed, never generated</Loop>
               <div style={{ marginTop: 14 }}><Flow nodes={OUTPUTS} /></div>
             </div>
 
@@ -183,7 +193,7 @@ export function ArchitectureView() {
           </section>
         )}
 
-        <footer className={s.footer}>Mistral × LAW · architecture diagram · the style is inspired by the corti.ai identity, without reusing its logo.</footer>
+        <footer className={s.footer}>thread · architecture diagram · the style is inspired by the corti.ai identity, without reusing its logo.</footer>
       </div>
     </div>
   );
