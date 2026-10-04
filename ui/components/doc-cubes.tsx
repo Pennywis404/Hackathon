@@ -12,7 +12,7 @@ export type DocPhase = "searching" | "found" | "imploding" | "done";
 const POP_GAP_S = 0.45; // délai entre deux documents qui sortent
 
 /** Recherche de documents en cubes bleus : un cube sort par document trouvé, l'amas implose, puis le résultat s'affiche. */
-export function DocCubes({ phase, docs }: { phase: DocPhase; docs: FoundDoc[] }) {
+export function DocCubes({ phase, docs, size = 84, status }: { phase: DocPhase; docs: FoundDoc[]; size?: number; status?: string }) {
   if (phase === "done") {
     const [main, ...others] = docs;
     if (!main) return <p className={styles.status}>No document found.</p>;
@@ -35,10 +35,11 @@ export function DocCubes({ phase, docs }: { phase: DocPhase; docs: FoundDoc[] })
   const shown = phase === "searching" ? [] : docs;
   return (
     <div className={`${styles.row} ${phase === "imploding" ? styles.leaving : ""}`}>
-      <CubeField size={84} imploding={phase === "imploding"} />
+      {/* marge : les cubes détachés s'écartent jusqu'à ~1,5× le rayon de l'amas en « respirant » */}
+      <CubeField size={size} imploding={phase === "imploding"} className="shrink-0" style={{ margin: size * 0.3 }} />
       <div>
         <p className={styles.status}>
-          {phase === "searching" ? "Reading files…" : `${docs.length} document${docs.length > 1 ? "s" : ""} found`}
+          {status ?? (phase === "searching" ? "Reading files…" : `${docs.length} document${docs.length > 1 ? "s" : ""} found`)}
         </p>
         <div className={styles.chips}>
           {shown.map((d, i) => (

@@ -19,6 +19,7 @@ import analyze  # noqa: E402
 import pipeline  # noqa: E402
 import qualify  # noqa: E402
 import redraft  # noqa: E402
+import similar  # noqa: E402
 import respond  # noqa: E402
 import sources  # noqa: E402
 from scripts.ui_data import build  # noqa: E402
@@ -35,9 +36,9 @@ STEPS = [
 ]
 
 
-def progress(step: str) -> None:
+def progress(step: str, **extra) -> None:
     label, pct = next((l, p) for s, l, p in STEPS if s == step)
-    print(json.dumps({"step": step, "label": label, "pct": pct}), file=sys.stderr, flush=True)
+    print(json.dumps({"step": step, "label": label, "pct": pct, **extra}, ensure_ascii=False), file=sys.stderr, flush=True)
 
 
 def corpus_stats() -> dict:
@@ -67,8 +68,9 @@ def main() -> None:
         progress("grille")
         ctx = pipeline.prepare(a.pv, a.exigence, None, out=Path("/dev/null"), dossier=a.dossier, pv_text=pv_text, sections=False)
         progress("similaires")
-        progress("correction")  # redraft calcule les cas similaires puis la correction
-        rd = redraft.redraft(ctx, a.n)
+        cas = similar.similar_cases(Path(ctx["pv"]), a.n, pv_text=ctx["pv_text"], type_operation=ctx["type_operation"])
+        progress("correction", docs=[c.get("acte_id") or c.get("source", "") for c in cas["cas"]])  # l'UI sort un cube par acte
+        rd = redraft.redraft(ctx, a.n, cas=cas)
         progress("feedback")
         ctx["reponse"] = respond.respond(ctx)
         progress("fichier")

@@ -14,8 +14,8 @@ const SINGLE: Cell[] = [[0, 0, 0]];
  * Amas de cubes bleus en mouvement (CSS 3D pur).
  * `size` : côté de l'amas en pixels ; `single` : un seul cube ; `imploding` : les cubes rentrent au centre et disparaissent.
  */
-export function CubeField({ size = 44, single = false, imploding = false, className }: {
-  size?: number; single?: boolean; imploding?: boolean; className?: string;
+export function CubeField({ size = 44, single = false, imploding = false, className, style }: {
+  size?: number; single?: boolean; imploding?: boolean; className?: string; style?: CSSProperties;
 }) {
   const cells = single ? SINGLE : DENSE;
   const cube = single ? size * 0.55 : size / 5.4;
@@ -31,7 +31,7 @@ export function CubeField({ size = 44, single = false, imploding = false, classN
   ];
   return (
     <div className={`${styles.scene} ${imploding ? styles.imploding : ""} ${className ?? ""}`}
-      style={{ width: size, height: size }} aria-hidden="true">
+      style={{ width: size, height: size, ...style }} aria-hidden="true">
       <div className={styles.cluster} style={{ width: 0, height: 0 }}>
         {cells.map(([x, y, z], i) => (
           <div

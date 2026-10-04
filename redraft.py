@@ -94,12 +94,14 @@ def merge_states(avant: list[dict], apres: list[dict], modifiees: set[str]) -> l
     return out
 
 
-def redraft(ctx: dict, n_cases: int = 3) -> dict:
+def redraft(ctx: dict, n_cases: int = 3, cas: dict | None = None) -> dict:
+    """`cas` : résultat de similar.similar_cases déjà calculé (sinon calculé ici)."""
     grille = scoring.load_grille()
     attendues = {c["id"]: c for c in grille["types_operation"][ctx["type_operation"]]["clauses"]}
     a_corriger = [{**attendues[d["id"]], "etat": d["etat"], "extrait_pv": d["extrait"]}
                   for d in ctx["clauses_detectees"] if d["etat"] != "presente"]
-    cas = similar.similar_cases(Path(ctx["pv"]), n_cases, pv_text=ctx["pv_text"], type_operation=ctx["type_operation"])
+    if cas is None:
+        cas = similar.similar_cases(Path(ctx["pv"]), n_cases, pv_text=ctx["pv_text"], type_operation=ctx["type_operation"])
     passages = _precedent_passages(a_corriger, cas["cas"])
     traces = ctx.get("contexte_dossier", {})
 
