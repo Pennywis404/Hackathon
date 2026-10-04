@@ -8,7 +8,7 @@ const mono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], w
 
 export const metadata: Metadata = {
   title: "thread — Onboard your junior with what matters for you",
-  description: "Thread scores a junior lawyer's draft PV, lists the missing clauses by type of operation, and justifies each one with the deal's emails and calls.",
+  description: "Thread onboards the next generation of juniors with the firm's own standards: precedents, partner reviews and deal context turned into sourced, explained feedback.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
