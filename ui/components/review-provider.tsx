@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from "react
 import type { Exigence, Review } from "@/lib/review";
 import demo from "@/data/demo/helianthe_v1.json";
 
-export interface Progress { step: string; label: string; pct: number; startedAt: number; docs?: string[] }
+export interface Progress { step: string; label: string; pct: number; startedAt: number; docs?: string[]; file?: string }
 
 interface ReviewState {
   reviews: Review[];
@@ -35,7 +35,7 @@ export function ReviewProvider({ children }: { children: React.ReactNode }) {
     setReviewing(true);
     setError(null);
     const startedAt = Date.now();
-    setProgress({ step: "upload", label: "Uploading the draft", pct: 2, startedAt });
+    setProgress({ step: "upload", label: "Uploading the draft", pct: 2, startedAt, file: file.name });
     const form = new FormData();
     form.set("file", file);
     form.set("exigence", exigence);
@@ -58,7 +58,7 @@ export function ReviewProvider({ children }: { children: React.ReactNode }) {
           const data = /^data: (.+)$/m.exec(frame)?.[1];
           if (!ev || !data) continue;
           const payload = JSON.parse(data);
-          if (ev === "step") setProgress((p) => ({ ...payload, docs: payload.docs ?? p?.docs, startedAt }));
+          if (ev === "step") setProgress((p) => ({ ...payload, docs: payload.docs ?? p?.docs, file: p?.file, startedAt }));
           else if (ev === "result") result = payload as Review;
           else if (ev === "error") throw new Error(payload.detail ? `${payload.error}\n${payload.detail}` : payload.error);
         }
