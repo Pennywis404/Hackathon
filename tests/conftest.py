@@ -9,13 +9,15 @@ import pytest  # noqa: E402
 
 import config  # noqa: E402
 import ingest  # noqa: E402
+import ocr  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
 def offline(tmp_path, monkeypatch):
-    """Par défaut : embeddings factices (pas d'API) et base Chroma jetable."""
+    """Par défaut : embeddings factices, base Chroma jetable, OCR désactivé (scan → rien)."""
     monkeypatch.setattr(config, "FAKE_EMBEDDINGS", True)
     monkeypatch.setattr(config, "DB_PATH", str(tmp_path / "chroma"))
+    monkeypatch.setattr(ocr, "ocr_pages", lambda pdf_path: [])
     yield tmp_path
 
 

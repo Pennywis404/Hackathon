@@ -57,7 +57,8 @@ def test_ingest_metadata_contract(docs_dir):
     rows = col.get(include=["metadatas"])
     assert col.count() > 0
     for m in rows["metadatas"]:
-        assert set(m) == {"source", "page", "categorie"}
+        assert {"source", "page", "categorie", "dossier", "source_type", "date", "auteur", "titre"} <= set(m)
+        assert m["source_type"] == "document" and m["dossier"] == "general"
     cats = {m["categorie"] for m in rows["metadatas"]}
     assert cats == {"guides_internes", "modeles_pv", "general"}
     # La catégorie vient du premier sous-dossier ; la racine donne "general".

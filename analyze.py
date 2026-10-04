@@ -15,11 +15,10 @@ import argparse
 import json
 from pathlib import Path
 
-import pymupdf
-
 import config
 import llm
 from ingest import get_collection
+from ocr import extract_pages
 
 # --------------------------------------------------------------------------- #
 # Prompts
@@ -61,16 +60,20 @@ de se prononcer."""
 # Étapes
 # --------------------------------------------------------------------------- #
 def read_pdf(path: Path) -> str:
-    with pymupdf.open(path) as doc:
-        text = "\n\n".join(page.get_text("text") for page in doc).strip()
+    """Texte du PV, couche texte ou OCR Mistral (voir ocr.py)."""
+    text = "\n\n".join(t for _, t in extract_pages(path)).strip()
     if not text:
-        raise SystemExit("Aucun texte extractible dans ce PV (PDF scanné ?).")
+        raise SystemExit("Aucun texte extractible dans ce PV (PDF scanné illisible ?).")
     return text
 
 
-def retrieve(col, queries: list[str], categorie: str | None) -> list[dict]:
-    """Interroge la base avec plusieurs requêtes, fusionne et dédoublonne."""
-    where = {"categorie": categorie} if categorie else None
+def retrieve(col, queries: list[str], categorie: str | None = None, where: dict | None = None) -> list[dict]:
+    """Interroge la base avec plusieurs requêtes, fusionne et dédoublonne.
+
+    `where` : filtre Chroma complet (prioritaire) ; `categorie` : raccourci pour {"categorie": ...}.
+    """
+    if where is None and categorie:
+        where = {"categorie": categorie}
     embeddings = llm.embed(queries)
     best: dict[str, dict] = {}
     for emb in embeddings:

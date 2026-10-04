@@ -25,6 +25,7 @@ MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
 EMBED_MODEL = os.getenv("EMBED_MODEL", "mistral-embed")
 # ministral-14b : accessible sur le palier gratuit ; mistral-large/medium ne le sont pas.
 CHAT_MODEL = os.getenv("CHAT_MODEL", "ministral-14b-latest")
+OCR_MODEL = os.getenv("OCR_MODEL", "mistral-ocr-latest")
 
 # Mode hors-ligne pour tester le pipeline sans clé API (embeddings factices).
 FAKE_EMBEDDINGS = os.getenv("FAKE_EMBEDDINGS", "0") == "1"

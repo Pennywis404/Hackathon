@@ -10,7 +10,7 @@ def _sources(passages):
 def test_best_match_comes_first(indexed):
     res = analyze.retrieve(indexed, ["quorum constate en debut de seance"], None)
     assert res, "aucun passage retrouvé"
-    assert res[0]["meta"] == {"source": "guides_internes/guide.pdf", "page": 1, "categorie": "guides_internes"}
+    assert (res[0]["meta"]["source"], res[0]["meta"]["page"], res[0]["meta"]["categorie"]) == ("guides_internes/guide.pdf", 1, "guides_internes")
     assert "quorum" in res[0]["text"]
     assert set(res[0]) == {"text", "meta", "distance"}
 
