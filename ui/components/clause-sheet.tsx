@@ -35,7 +35,7 @@ export function ClauseSheet({ clause, reponse, onClose }: { clause: Clause | nul
             <div className="space-y-6 px-5 py-5 text-[14px] leading-relaxed">
               {llm?.pourquoi_ici && (
                 <Block title="Why it matters in this matter">
-                  <p className="rounded-md border-l-2 border-lime bg-lime-soft/40 px-3 py-2">{llm.pourquoi_ici}</p>
+                  <p className="rounded-md border-l-2 border-brand-mid bg-brand-soft/40 px-3 py-2">{llm.pourquoi_ici}</p>
                 </Block>
               )}
 

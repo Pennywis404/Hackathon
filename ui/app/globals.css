@@ -10,10 +10,16 @@
   --font-sans: "Instrument Sans", "Instrument Sans Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-heading: "Instrument Sans", "Instrument Sans Fallback", ui-sans-serif, system-ui, sans-serif;
-  /* Accent Corti */
-  --color-lime: #b8f818;
-  --color-lime-soft: #eefcc4;
-  --color-ink: #060606;
+  /* Accent de marque (code couleur du schéma d'architecture) */
+  --color-brand: #1233d6;
+  --color-brand-foreground: #ffffff;
+  --color-brand-soft: #e8ecfc;
+  --color-brand-mid: #4d6ae8;   /* bleu plus clair, lisible sur fond noir */
+  --color-ink: #0a0a0a;
+  --color-navy: #0a0a0a;
+  /* Alias de l'ancienne palette (composants annexes) */
+  --color-lime: #1233d6;
+  --color-lime-soft: #e8ecfc;
   /* Statuts (Legora : trois couleurs, utilisées avec parcimonie) */
   --color-critical: #e5484d;
   --color-critical-text: #a12d31;
@@ -146,33 +152,38 @@
   }
 }
 
-/* ---- Corti look : blanc, #f8f8f8, texte #191919, bordures #eee, accent lime, boutons 10px ---- */
+/* ---- Code couleur du schéma d'architecture : blanc, #f4f4f2, texte #0a0a0a, filets #dcdcd8, accent bleu #1233d6 ---- */
 :root {
   --background: #ffffff;
-  --foreground: #191919;
+  --foreground: #0a0a0a;
   --card: #ffffff;
-  --card-foreground: #191919;
+  --card-foreground: #0a0a0a;
   --popover: #ffffff;
-  --popover-foreground: #191919;
-  --primary: #191919;
+  --popover-foreground: #0a0a0a;
+  --primary: #1233d6;
   --primary-foreground: #ffffff;
-  --secondary: #f8f8f8;
-  --secondary-foreground: #191919;
-  --muted: #f8f8f8;
-  --muted-foreground: #666666;
-  --accent: #f2f2f2;
-  --accent-foreground: #191919;
-  --border: #eeeeee;
-  --input: rgba(0, 0, 0, 0.12);
-  --ring: rgba(0, 0, 0, 0.25);
-  --sidebar: #f8f8f8;
-  --sidebar-foreground: #191919;
-  --sidebar-accent: #eefcc4;
-  --sidebar-accent-foreground: #191919;
-  --sidebar-border: #eeeeee;
-  --radius: 0.625rem; /* 10px : boutons Corti ; cartes en rounded-md (6px) */
+  --secondary: #f4f4f2;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f4f4f2;
+  --muted-foreground: #6b6b70;
+  --accent: #ececea;
+  --accent-foreground: #0a0a0a;
+  --border: #dcdcd8;
+  --input: #dcdcd8;
+  --ring: rgba(18, 51, 214, 0.45);
+  --sidebar: #f4f4f2;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #1233d6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8ecfc;
+  --sidebar-accent-foreground: #0a0a0a;
+  --sidebar-border: #dcdcd8;
+  --sidebar-ring: rgba(18, 51, 214, 0.45);
+  --radius: 0.625rem;
 }
 body { font-size: 15px; line-height: 1.6; }
 h1, h2, h3 { letter-spacing: -0.02em; }
 .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-foreground); }
-.eyebrow::before { content: "■"; margin-right: 0.6em; color: var(--color-lime); font-size: 9px; vertical-align: 1px; }
+.eyebrow::before { content: "■"; margin-right: 0.6em; color: var(--color-brand); font-size: 9px; vertical-align: 1px; }
+/* Trame de points des sections noires, comme l'en-tête du schéma */
+.dots-dark { background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.5px); background-size: 10px 10px; }

@@ -37,7 +37,7 @@ function Segmented({ value, onChange }: { value: Exigence; onChange: (v: Exigenc
       <div role="radiogroup" className="flex rounded-md border bg-background p-0.5 font-mono text-[12px]">
         {(["standard", "max"] as Exigence[]).map((v) => (
           <button key={v} type="button" role="radio" aria-checked={value === v} onClick={() => onChange(v)}
-            className={cn("rounded px-2.5 py-1 capitalize transition-colors", value === v ? "bg-lime text-ink" : "text-muted-foreground hover:text-foreground")}>
+            className={cn("rounded px-2.5 py-1 capitalize transition-colors", value === v ? "bg-brand text-white" : "text-muted-foreground hover:text-foreground")}>
             {v}
           </button>
         ))}

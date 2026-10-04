@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FileText, HelpCircle, PanelLeft, Plus, Sparkles } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -21,9 +22,9 @@ export function AppSidebar() {
     <Sidebar className="border-r border-sidebar-border">
       <SidebarHeader className="gap-3 px-3 pt-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
-            <span className="flex size-6 items-center justify-center rounded-sm bg-lime font-mono text-[12px] font-medium text-ink">J</span>
-            JuLaw
+          <Link href="/" className="flex items-center gap-2" aria-label="thread — home">
+            <Image src="/thread-mark.svg" alt="" width={24} height={23} className="size-6" />
+            <span className="text-[18px] font-bold leading-none tracking-tight text-brand">thread</span>
           </Link>
           <Button variant="ghost" size="icon" className="size-8 rounded-lg text-muted-foreground" aria-label="Collapse sidebar" onClick={toggleSidebar}>
             <PanelLeft className="size-4" />

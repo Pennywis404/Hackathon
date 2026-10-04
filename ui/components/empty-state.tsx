@@ -22,13 +22,13 @@ export function EmptyState({ exigence, onExigence }: { exigence: Exigence; onExi
         <p className="eyebrow">New workspace</p>
         <h1 className="mt-3 text-[32px] font-semibold leading-[1.1]">Import a draft. Get it corrected against what the firm actually does.</h1>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          JuLaw reads your PV, finds the closest precedents in the firm&apos;s corpus, and rewrites only the missing clauses, each with its source.
+          Thread reads your PV, finds the closest precedents in the firm&apos;s corpus, and rewrites only the missing clauses, each with its source.
         </p>
       </div>
 
       <div className="rounded-md border p-5">
         <div className="flex flex-wrap items-center gap-3">
-          <Button className="h-11 rounded-lg bg-lime px-5 text-[15px] text-ink hover:bg-lime/85" disabled={reviewing} onClick={() => input.current?.click()}>
+          <Button className="h-11 rounded-lg bg-brand px-5 text-[15px] text-white hover:bg-brand/90" disabled={reviewing} onClick={() => input.current?.click()}>
             <FileUp className="size-4" /> Import a draft (PDF, .docx)
           </Button>
           <Button variant="outline" className="h-11 rounded-lg px-5 text-[15px] font-normal shadow-none" disabled>
@@ -39,7 +39,7 @@ export function EmptyState({ exigence, onExigence }: { exigence: Exigence; onExi
             <div role="radiogroup" className="flex rounded-md border bg-background p-0.5 font-mono text-[12px]">
               {(["standard", "max"] as Exigence[]).map((v) => (
                 <button key={v} type="button" role="radio" aria-checked={exigence === v} onClick={() => onExigence(v)}
-                  className={`rounded px-2.5 py-1 capitalize ${exigence === v ? "bg-lime text-ink" : "text-muted-foreground hover:text-foreground"}`}>{v}</button>
+                  className={`rounded px-2.5 py-1 capitalize ${exigence === v ? "bg-brand text-white" : "text-muted-foreground hover:text-foreground"}`}>{v}</button>
               ))}
             </div>
           </div>

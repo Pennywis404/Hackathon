@@ -44,7 +44,7 @@ function CaseCard({ c }: { c: CasSimilaire }) {
           <span className="shrink-0 rounded-md bg-muted px-1.5 py-0.5 font-mono text-[11px] tabular-nums text-muted-foreground">coverage {c.brut}</span>
         </div>
         <ul className="mt-3 flex flex-wrap gap-1.5">
-          {c.raisons.slice(0, 4).map((r) => <li key={r} className="rounded-sm bg-lime-soft px-1.5 py-0.5 text-[12px] text-ink">{r}</li>)}
+          {c.raisons.slice(0, 4).map((r) => <li key={r} className="rounded-sm bg-brand-soft px-1.5 py-0.5 text-[12px] text-white">{r}</li>)}
         </ul>
       </div>
       {c.historique.length > 0 && (
@@ -89,7 +89,7 @@ function ChangeSheet({ change, onClose }: { change: Changement | null; onClose: 
           <>
             <SheetHeader className="border-b bg-muted/60 px-5 py-4">
               <div className="flex items-center gap-2 font-mono text-[11px]">
-                <span className="rounded-md bg-lime px-1.5 py-0.5 text-ink">modified</span>
+                <span className="rounded-md bg-brand px-1.5 py-0.5 text-white">modified</span>
                 {change.etat_avant && <span className="rounded-md bg-muted px-1.5 py-0.5 text-muted-foreground">was {change.etat_avant}</span>}
               </div>
               <SheetTitle className="text-[15px] font-semibold leading-snug">{change.libelle}</SheetTitle>
@@ -154,7 +154,7 @@ export function ResultView({ review }: { review: Review }) {
           <span className="text-muted-foreground">→</span>
           <div className="flex items-center gap-3"><ScoreRing value={review.score_apres.final} /><div><p className="text-[12px] text-muted-foreground">Corrected file</p><p className="font-mono text-[14px]">{review.score_apres.final} / 100</p></div></div>
           <div className="ml-auto flex flex-col items-end gap-2">
-            <Button className="h-9 rounded-lg bg-lime px-3 text-ink hover:bg-lime/85" nativeButton={false} render={<a href={review.docx_url} download />}>
+            <Button className="h-9 rounded-lg bg-brand px-3 text-white hover:bg-brand/90" nativeButton={false} render={<a href={review.docx_url} download />}>
               <Download className="size-4" /> Download the corrected .docx
             </Button>
             <p className="font-mono text-[11px] text-muted-foreground">{review.inchange_pct}% of your text kept · {review.changements.length} changes · {toVerify} to verify</p>
@@ -176,7 +176,7 @@ export function ResultView({ review }: { review: Review }) {
                 ? s.text.split("\n").map((p, j) => (p.trim() ? <p key={`${i}-${j}`} className="mb-2 whitespace-pre-wrap">{p}</p> : null))
                 : (
                   <button key={i} type="button" onClick={() => setChange(byId.get(s.id) ?? { id: s.id, libelle: s.id, etat_avant: "", texte: s.text, resume: "", source_precedent: "", source_email: "", justification: "", a_verifier: [] })}
-                    className="mb-2 block w-full rounded-sm border-l-2 border-lime bg-lime-soft/60 px-3 py-1.5 text-left whitespace-pre-wrap transition-colors hover:bg-lime-soft">
+                    className="mb-2 block w-full rounded-sm border-l-2 border-brand-mid bg-brand-soft/60 px-3 py-1.5 text-left whitespace-pre-wrap transition-colors hover:bg-brand-soft">
                     {s.text.trim()}
                   </button>
                 ),

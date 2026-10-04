@@ -7,8 +7,8 @@ const sans = Instrument_Sans({ variable: "--font-instrument", subsets: ["latin"]
 const mono = IBM_Plex_Mono({ variable: "--font-plex-mono", subsets: ["latin"], weight: ["400", "500"] });
 
 export const metadata: Metadata = {
-  title: "JuLaw — PV review grounded in what was negotiated",
-  description: "JuLaw scores a junior lawyer's draft PV, lists the missing clauses by type of operation, and justifies each one with the deal's emails and calls.",
+  title: "thread — PV review grounded in what the firm actually does",
+  description: "Thread scores a junior lawyer's draft PV, lists the missing clauses by type of operation, and justifies each one with the deal's emails and calls.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

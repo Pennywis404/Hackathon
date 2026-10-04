@@ -20,11 +20,11 @@ export function DocCubes({ phase, docs }: { phase: DocPhase; docs: FoundDoc[] })
       <div className={styles.card}>
         <div className={styles.title}>
           <CubeField size={22} single />
-          {main.href ? <a href={main.href}>{main.name}</a> : main.name}
+          {main.href ? <a href={main.href} target="_blank" rel="noreferrer">{main.name}</a> : main.name}
         </div>
         {main.threads && main.threads.length > 0 && (
           <div className={styles.threads}>
-            {main.threads.map((t) => <a key={t.label} href={t.href} className={styles.thread}>{t.label}</a>)}
+            {main.threads.map((t) => <a key={t.label} href={t.href} target="_blank" rel="noreferrer" className={styles.thread}>{t.label}</a>)}
           </div>
         )}
         {others.length > 0 && <p className={styles.others}>Also found: {others.map((d) => d.name).join(" · ")}</p>}
